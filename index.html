@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Из России в Бразилию — путевой журнал переселенца</title>
-<meta name="description" content="Практический журнал о переезде из России в Бразилию: визы, деньги, язык, города, чеклист.">
+<title>Точка Б — остаться или уехать? Тест, шесть стран, консультация</title>
+<meta name="description" content="Не можешь решиться на переезд? Тест готовности, шесть лояльных стран, честный бюджет и консультация, после которой появляется план.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230E6B45'/%3E%3Cpath d='M6 24 Q16 6 26 24' stroke='%23F2B705' stroke-width='2.5' fill='none' stroke-dasharray='3 4'/%3E%3Ccircle cx='6' cy='24' r='2.5' fill='%23F2EDE2'/%3E%3Ccircle cx='26' cy='24' r='2.5' fill='%23F2EDE2'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
   --ink:#1E2B24; --ink-soft:rgba(30,43,36,.62);
   --line:rgba(30,43,36,.16); --line-strong:rgba(30,43,36,.42);
   --green:#0E6B45; --green-deep:#0A3A2A;
-  --gold:#F2B705; --gold-soft:#F6D867;
+  --gold:#F2B705; --gold-soft:#F6D867; --gold-dark:#9A7B00;
   --night:#0B1720; --cream:#EFE9DC;
   --serif:'Cormorant',Georgia,serif;
   --sans:'Golos Text','Segoe UI',sans-serif;
@@ -30,7 +30,6 @@ body{
   -webkit-font-smoothing:antialiased; overflow-x:hidden;
 }
 ::selection{background:var(--gold); color:var(--ink)}
-img{display:block; max-width:100%}
 a{color:inherit}
 button{font:inherit; color:inherit; background:none; border:0; cursor:pointer}
 :focus-visible{outline:2px solid var(--green); outline-offset:3px}
@@ -41,7 +40,6 @@ mark{background:var(--gold-soft); color:var(--ink); padding:0 .18em}
 .wrap{max-width:1240px; margin:0 auto; padding:0 clamp(18px,4vw,56px)}
 section{scroll-margin-top:84px}
 
-/* появление при скролле */
 .reveal{opacity:0; transform:translateY(26px); transition:opacity .8s cubic-bezier(.2,.6,.2,1), transform .8s cubic-bezier(.2,.6,.2,1)}
 .reveal.in{opacity:1; transform:none}
 @media (prefers-reduced-motion:reduce){
@@ -69,6 +67,12 @@ nav.main a{
 }
 nav.main a i{font-style:normal; color:var(--green); margin-right:5px}
 nav.main a:hover{color:var(--ink); border-color:var(--gold)}
+.nav-cta{
+  font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  background:var(--green); color:var(--cream); padding:9px 16px; text-decoration:none;
+  white-space:nowrap; transition:background .2s;
+}
+.nav-cta:hover{background:var(--green-deep)}
 
 /* ============ HERO ============ */
 .hero{
@@ -94,7 +98,7 @@ nav.main a:hover{color:var(--ink); border-color:var(--gold)}
 .hero-kicker::before{content:''; width:9px; height:9px; background:var(--gold)}
 h1{
   font-family:var(--serif); font-weight:600; letter-spacing:-.015em;
-  font-size:clamp(3rem,9.4vw,8.6rem); line-height:.96; max-width:14ch;
+  font-size:clamp(3rem,9vw,8.2rem); line-height:.98; max-width:15ch;
 }
 h1 em{font-style:italic; font-weight:600; color:var(--green)}
 .hero-tele{
@@ -106,7 +110,7 @@ h1 em{font-style:italic; font-weight:600; color:var(--green)}
 .btn{
   display:inline-flex; align-items:center; gap:10px;
   font-family:var(--mono); font-size:11.5px; letter-spacing:.16em; text-transform:uppercase;
-  padding:15px 26px; border:1px solid var(--ink); text-decoration:none;
+  padding:15px 26px; border:1px solid var(--ink); text-decoration:none; cursor:pointer;
   transition:background .25s,color .25s,border-color .25s;
 }
 .btn svg{transition:transform .25s}
@@ -146,7 +150,7 @@ h1 em{font-style:italic; font-weight:600; color:var(--green)}
 .chap-sub{max-width:60ch; color:var(--ink-soft); font-size:15.5px}
 .chap-body{margin-top:clamp(2.4rem,5vh,4rem)}
 
-/* ============ 01 ЗАЧЕМ ============ */
+/* ============ 01 РАЗВИЛКА ============ */
 .why-grid{display:grid; grid-template-columns:7fr 5fr; gap:clamp(2rem,6vw,6rem); align-items:start}
 .manifest p{font-size:clamp(1.1rem,1.7vw,1.3rem); line-height:1.7; margin-bottom:1.4em}
 .manifest p.lead{font-weight:500}
@@ -157,76 +161,118 @@ h1 em{font-style:italic; font-weight:600; color:var(--green)}
 .fact:hover .fact-num{color:var(--green)}
 .fact-label{font-family:var(--mono); font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); text-align:right}
 
-/* ============ 02 ПОЛЁТ ============ */
-#flight{background:var(--night); color:var(--cream); border-top:0}
-#flight .chap-meta{color:rgba(239,233,220,.6)}
-#flight .chap-meta i{color:var(--gold)}
-#flight h2 em{color:var(--gold)}
-#flight .chap-sub{color:rgba(239,233,220,.66)}
-.flight-frame{position:relative; border:1px solid rgba(239,233,220,.25); overflow:hidden; margin-top:clamp(2.2rem,4vh,3.4rem)}
-#flightCanvas{display:block; width:100%; height:clamp(380px,62vh,620px)}
-.flight-tel{
-  position:absolute; top:14px; left:14px; display:grid; grid-template-columns:repeat(2,minmax(130px,1fr));
-  gap:8px 26px; font-family:var(--mono); pointer-events:none;
+/* ============ 02 ТЕСТ ============ */
+#quiz{background:var(--paper-2)}
+.quiz-frame{
+  max-width:820px; margin:0 auto; background:var(--paper);
+  border:1px solid var(--line-strong); padding:clamp(1.6rem,4.5vw,3rem);
+  box-shadow:8px 8px 0 rgba(30,43,36,.08);
 }
-.flight-tel div span{display:block; font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:rgba(239,233,220,.55)}
-.flight-tel div b{font-size:15px; font-weight:500; color:var(--cream)}
-.flight-status{
+.quiz-top{display:flex; justify-content:space-between; gap:1rem; font-family:var(--mono); font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px}
+.quiz-bar{height:2px; background:rgba(30,43,36,.14); margin-bottom:2rem}
+.quiz-bar i{display:block; height:100%; width:0; background:var(--green); transition:width .4s cubic-bezier(.4,0,.2,1)}
+.quiz-q{font-family:var(--serif); font-weight:600; font-size:clamp(1.5rem,3vw,2.2rem); line-height:1.15}
+.quiz-opts{display:grid; gap:10px; margin-top:1.8rem}
+.quiz-opt{
+  display:flex; gap:14px; align-items:baseline; text-align:left;
+  border:1px solid var(--line-strong); padding:15px 18px; font-size:15px; line-height:1.5;
+  transition:border-color .2s, background .2s, color .2s, transform .15s;
+}
+.quiz-opt i{font-family:var(--mono); font-style:normal; font-size:11px; letter-spacing:.12em; color:var(--green); flex:0 0 auto}
+.quiz-opt:hover{border-color:var(--green); background:rgba(242,183,5,.08)}
+.quiz-opt.sel{background:var(--green); border-color:var(--green); color:var(--cream); transform:translateX(4px)}
+.quiz-opt.sel i{color:var(--gold)}
+.quiz-nav{display:flex; justify-content:space-between; align-items:center; margin-top:2rem}
+#quizBack{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); visibility:hidden; transition:color .2s}
+#quizBack:hover{color:var(--ink)}
+.quiz-hint{font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+.quiz-result{text-align:left; animation:pop .55s cubic-bezier(.2,.9,.3,1.2)}
+.stamp{
+  display:inline-block; border:3px double currentColor; padding:14px 28px;
+  transform:rotate(-2.5deg); font-family:var(--mono); font-weight:700;
+  letter-spacing:.3em; text-transform:uppercase; font-size:clamp(12px,2vw,15px);
+  margin:.6rem 0 1.6rem;
+}
+.stamp.go{color:var(--green)} .stamp.mid{color:var(--gold-dark)} .stamp.wait{color:var(--ink-soft)}
+.quiz-verdict{font-family:var(--serif); font-weight:600; font-size:clamp(1.3rem,2.6vw,1.8rem); line-height:1.3; max-width:26ch}
+.quiz-text{margin-top:1.1rem; color:var(--ink-soft); max-width:56ch}
+.quiz-score-line{margin-top:1.4rem; font-family:var(--mono); font-size:11.5px; letter-spacing:.08em; color:var(--ink-soft)}
+.quiz-cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:1.8rem}
+.quiz-score-strip{display:flex; gap:5px; margin-bottom:1.2rem}
+.quiz-score-strip span{width:26px; height:7px; border:1px solid var(--line-strong)}
+.quiz-score-strip span.on{background:var(--green); border-color:var(--green)}
+@keyframes pop{from{opacity:0; transform:translateY(14px) scale(.98)}to{opacity:1; transform:none}}
+
+/* ============ 03 КАРТА ============ */
+#map{background:var(--night); color:var(--cream); border-top:0}
+#map .chap-meta{color:rgba(239,233,220,.6)}
+#map .chap-meta i{color:var(--gold)}
+#map h2 em{color:var(--gold)}
+#map .chap-sub{color:rgba(239,233,220,.66)}
+.map-frame{position:relative; border:1px solid rgba(239,233,220,.25); overflow:hidden; margin-top:clamp(2.2rem,4vh,3.4rem)}
+#routeCanvas{display:block; width:100%; height:clamp(380px,60vh,560px); touch-action:pan-y}
+.map-tel{
+  position:absolute; top:14px; left:14px; display:grid; grid-template-columns:repeat(3,minmax(120px,1fr));
+  gap:8px 24px; font-family:var(--mono); pointer-events:none;
+}
+.map-tel div span{display:block; font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:rgba(239,233,220,.55)}
+.map-tel div b{font-size:15px; font-weight:500; color:var(--cream)}
+.map-status{
   position:absolute; left:14px; bottom:12px; font-family:var(--mono); font-size:10.5px;
   letter-spacing:.2em; text-transform:uppercase; color:var(--gold); pointer-events:none;
 }
-.flight-replay{
+.map-auto{
   position:absolute; right:14px; bottom:12px; font-family:var(--mono); font-size:10.5px;
   letter-spacing:.2em; text-transform:uppercase; color:var(--cream);
   border:1px solid rgba(239,233,220,.5); padding:9px 16px; transition:.25s;
 }
-.flight-replay:hover{background:var(--gold); border-color:var(--gold); color:var(--night)}
-.flight-cap{
-  margin-top:14px; font-family:var(--mono); font-size:11.5px; letter-spacing:.05em;
-  color:rgba(239,233,220,.55);
-}
+.map-auto:hover{background:var(--gold); border-color:var(--gold); color:var(--night)}
+.map-cap{margin-top:14px; font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; color:rgba(239,233,220,.55)}
 
-/* ============ 03 ВИЗЫ ============ */
-.acc-item{border-bottom:1px solid var(--line)}
-.acc-item:first-child{border-top:1px solid var(--line-strong)}
-.acc-head{
-  width:100%; display:grid; grid-template-columns:66px 1fr auto 34px; align-items:center; gap:1.2rem;
-  padding:1.35rem .4rem; text-align:left; transition:background .25s;
+/* ============ 04 АТЛАС ============ */
+.atlas-grid{display:grid; grid-template-columns:5fr 7fr; gap:clamp(2rem,6vw,5rem); align-items:start}
+.atlas-panel{
+  position:sticky; top:92px; border:1px solid var(--line-strong);
+  padding:clamp(1.5rem,3.5vw,2.4rem); background:var(--paper);
+  box-shadow:8px 8px 0 rgba(30,43,36,.08);
 }
-.acc-head:hover{background:rgba(242,183,5,.09)}
-.acc-code{font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--green); font-weight:700}
-.acc-name{font-weight:600; font-size:clamp(1.02rem,1.5vw,1.2rem); line-height:1.3}
-.acc-tag{font-family:var(--mono); font-size:11px; letter-spacing:.05em; color:var(--ink-soft); white-space:nowrap}
-.acc-ico{justify-self:end; display:grid; place-items:center; width:30px; height:30px; border:1px solid var(--line-strong); transition:transform .35s,background .25s}
-.acc-item.open .acc-ico{transform:rotate(45deg); background:var(--ink); border-color:var(--ink); color:var(--paper)}
-.acc-body{overflow:hidden; max-height:0; transition:max-height .45s cubic-bezier(.4,0,.2,1)}
-.acc-pad{padding:0 .4rem 1.6rem 78px; max-width:74ch; color:var(--ink-soft); font-size:15px}
-.acc-pad b{color:var(--ink)}
-.cpf-banner{
-  margin-top:3rem; background:var(--green-deep); color:var(--cream);
-  display:grid; grid-template-columns:auto 1fr; gap:1.6rem 2.4rem; padding:clamp(1.6rem,3.5vw,2.6rem); align-items:start;
+.atlas-code{display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:.26em; color:var(--paper); background:var(--green); padding:6px 12px; margin-bottom:1.1rem}
+.atlas-name{font-family:var(--serif); font-weight:600; font-size:clamp(2.4rem,5vw,3.8rem); line-height:1; margin-bottom:.3rem}
+.atlas-region{font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:1.6rem}
+.atlas-tag{font-family:var(--serif); font-style:italic; font-size:1.15rem; color:var(--ink-soft); margin-bottom:1.6rem; line-height:1.5}
+.meter{display:flex; align-items:center; gap:12px; padding:10px 0; border-top:1px solid var(--line)}
+.meter b{flex:1; font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); font-weight:500}
+.meter-cells{display:flex; gap:5px}
+.meter-cells span{width:11px; height:11px; border:1px solid var(--line-strong)}
+.meter-cells span.on{background:var(--green); border-color:var(--green)}
+.atlas-foot{margin-top:1.5rem; font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; color:var(--ink-soft)}
+.cntry{border-bottom:1px solid var(--line)}
+.cntry:first-child{border-top:1px solid var(--line-strong)}
+.cntry-name{
+  display:flex; align-items:baseline; gap:1.1rem; width:100%; text-align:left;
+  font-family:var(--serif); font-weight:600; font-size:clamp(1.8rem,3.8vw,3rem); line-height:1.1;
+  padding:1.1rem .2rem; transition:color .25s;
 }
-.cpf-banner .tag{
-  font-family:var(--mono); font-size:10.5px; letter-spacing:.24em; text-transform:uppercase;
-  color:var(--night); background:var(--gold); padding:7px 12px; white-space:nowrap;
+.cntry-idx{font-family:var(--mono); font-style:normal; font-size:11px; letter-spacing:.18em; color:var(--ink-soft); font-weight:400}
+.cntry:not(.active) .cntry-name{color:rgba(30,43,36,.42)}
+.cntry.active .cntry-name{color:var(--green)}
+.cntry.active .cntry-idx{color:var(--gold)}
+.cntry-info{overflow:hidden; max-height:0; transition:max-height .5s cubic-bezier(.4,0,.2,1)}
+.cntry-info-in{padding:0 .2rem 1.7rem; max-width:64ch}
+.cntry-info-in p{color:var(--ink-soft); font-size:15px}
+.cntry-meta{
+  margin-top:.9rem; font-family:var(--mono); font-size:11px; letter-spacing:.05em; text-transform:uppercase;
+  color:var(--ink); border-left:3px solid var(--gold); padding-left:12px; line-height:1.9;
 }
-.cpf-banner p{font-size:clamp(1.02rem,1.5vw,1.18rem); line-height:1.65}
-.cpf-banner p b{color:var(--gold)}
-.cpf-banner small{grid-column:2; font-family:var(--mono); font-size:11px; letter-spacing:.06em; color:rgba(239,233,220,.6)}
+.atlas-more{margin-top:2rem; font-size:14px; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:1.2rem}
+.atlas-more b{color:var(--ink)}
 
-/* ============ 04 ДЕНЬГИ ============ */
-.money-grid{display:grid; grid-template-columns:6fr 6fr; gap:clamp(2rem,6vw,5.5rem); align-items:start}
-.chips{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:2.2rem}
-.chip{
-  font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
-  border:1px solid var(--line-strong); padding:9px 15px; transition:.2s;
-}
-.chip:hover{border-color:var(--green)}
-.chip.active{background:var(--green); border-color:var(--green); color:var(--cream)}
-.slider-row{display:block; padding:1.15rem 0; border-top:1px solid var(--line)}
-.slider-row .row-top{display:flex; justify-content:space-between; align-items:baseline; gap:1rem; margin-bottom:14px}
-.slider-row label{font-weight:500; font-size:15px}
-.slider-row output{font-family:var(--mono); font-size:14px; color:var(--green); font-weight:700}
+/* ============ 05 БЮДЖЕТ ============ */
+.bud-grid{display:grid; grid-template-columns:7fr 5fr; gap:clamp(2rem,6vw,5rem); align-items:start}
+.budget-set{padding:1.15rem 0 1.6rem; border-top:1px solid var(--line-strong)}
+.budget-set .row-top{display:flex; justify-content:space-between; align-items:baseline; gap:1rem; margin-bottom:14px}
+.budget-set label{font-weight:500; font-size:15px}
+.budget-set output{font-family:var(--mono); font-size:15px; color:var(--green); font-weight:700}
 input[type=range]{
   -webkit-appearance:none; appearance:none; width:100%; height:2px; outline:none;
   background:linear-gradient(90deg, var(--green) var(--p,50%), rgba(30,43,36,.18) var(--p,50%));
@@ -239,31 +285,35 @@ input[type=range]::-moz-range-thumb{
   width:17px; height:17px; border-radius:50%; background:var(--paper);
   border:2px solid var(--green); cursor:pointer; box-shadow:0 0 0 4px rgba(14,107,69,.14);
 }
-.rate-row{
-  display:flex; align-items:center; gap:10px; margin-top:1.6rem; padding-top:1.2rem;
-  border-top:1px solid var(--line); font-family:var(--mono); font-size:12.5px;
+.bud-note{margin-top:1.1rem; font-family:var(--mono); font-size:11px; letter-spacing:.06em; color:var(--ink-soft)}
+.bud-row{
+  display:grid; grid-template-columns:minmax(120px,160px) 1fr 96px; gap:1.1rem; align-items:center;
+  padding:.85rem 0; border-bottom:1px solid var(--line); transition:opacity .3s;
 }
-.rate-row input{
-  width:76px; font-family:var(--mono); font-size:14px; font-weight:700; color:var(--green);
-  background:transparent; border:0; border-bottom:1.5px solid var(--line-strong); padding:3px 2px; text-align:center;
-}
-.rate-row input:focus{outline:none; border-color:var(--green)}
-.rate-row small{color:var(--ink-soft); font-size:10.5px; letter-spacing:.06em}
-.money-result{border:1px solid var(--line-strong); padding:clamp(1.6rem,3vw,2.4rem); position:sticky; top:92px}
-.money-label{font-family:var(--mono); font-size:10.5px; letter-spacing:.24em; text-transform:uppercase; color:var(--ink-soft)}
-.sum-brl{font-family:var(--serif); font-weight:600; font-size:clamp(3rem,6vw,4.8rem); line-height:1; margin:.3em 0 .1em}
-.sum-brl i{font-style:normal; color:var(--green)}
-.sum-rub{font-family:var(--mono); font-size:14px; color:var(--ink-soft); margin-bottom:1.8rem}
-.split-bar{display:flex; height:16px; border:1px solid var(--line-strong); margin-bottom:12px}
-.split-bar span{height:100%; transition:width .4s cubic-bezier(.4,0,.2,1)}
-.split-bar .sg1{background:var(--green)} .split-bar .sg2{background:var(--gold)} .split-bar .sg3{background:var(--ink)}
-.legend{display:flex; flex-wrap:wrap; gap:.4rem 1.6rem; font-family:var(--mono); font-size:11.5px; letter-spacing:.04em; color:var(--ink-soft)}
-.legend b{color:var(--ink)}
-.legend i{font-style:normal; display:inline-block; width:9px; height:9px; margin-right:7px; vertical-align:baseline}
-.money-note{margin-top:1.6rem; padding-top:1.2rem; border-top:1px solid var(--line); font-size:13.5px; color:var(--ink-soft); line-height:1.65}
+.bud-name{font-weight:600; font-size:15px; line-height:1.25}
+.bud-name span{display:block; font-family:var(--mono); font-weight:400; font-size:10.5px; letter-spacing:.05em; color:var(--ink-soft)}
+.bud-track{position:relative; height:14px; background:rgba(30,43,36,.07)}
+.bud-band{position:absolute; top:2px; bottom:2px; background:rgba(30,43,36,.3); transition:background .3s}
+.bud-tick{position:absolute; top:-5px; bottom:-5px; width:2px; background:var(--ink); transition:left .2s linear}
+.bud-state{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; text-align:right; color:var(--ink-soft)}
+.bud-row.ok{opacity:1} .bud-row.ok .bud-band{background:var(--green)} .bud-row.ok .bud-state{color:var(--green)}
+.bud-row.tight{opacity:1} .bud-row.tight .bud-band{background:var(--gold)} .bud-row.tight .bud-state{color:var(--gold-dark)}
+.bud-row.no{opacity:.45}
+.bud-result{border:1px solid var(--line-strong); padding:clamp(1.6rem,3vw,2.4rem); position:sticky; top:92px; box-shadow:8px 8px 0 rgba(30,43,36,.08)}
+.bud-big{font-family:var(--serif); font-weight:600; font-size:clamp(3rem,6vw,4.6rem); line-height:1; margin:.25em 0}
+.bud-big i{font-style:normal; color:var(--green); font-size:.5em}
+.bud-verdict{color:var(--ink-soft); font-size:15px; min-height:4.5em}
+.bud-cta{margin-top:1.4rem}
 
-/* ============ 05 ЯЗЫК ============ */
+/* ============ 06 ЯЗЫК ============ */
 .lang-grid{display:grid; grid-template-columns:7fr 5fr; gap:clamp(2rem,6vw,5rem); align-items:start}
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:1.6rem}
+.chip{
+  font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  border:1px solid var(--line-strong); padding:9px 15px; transition:.2s;
+}
+.chip:hover{border-color:var(--green)}
+.chip.active{background:var(--green); border-color:var(--green); color:var(--cream)}
 .ph-row{
   display:grid; grid-template-columns:44px 1.15fr 1fr 1fr; gap:1rem; align-items:center;
   padding:1.05rem .5rem; border-bottom:1px solid var(--line); cursor:pointer;
@@ -272,47 +322,18 @@ input[type=range]::-moz-range-thumb{
 .ph-row:first-child{border-top:1px solid var(--line-strong)}
 .ph-row:hover{background:rgba(242,183,5,.1)}
 .ph-row.speaking{background:var(--gold); box-shadow:inset 4px 0 0 var(--green-deep)}
-.ph-say{
-  width:34px; height:34px; border:1px solid var(--line-strong); display:grid; place-items:center;
-  transition:.2s; color:var(--green);
-}
+.ph-say{width:34px; height:34px; border:1px solid var(--line-strong); display:grid; place-items:center; transition:.2s; color:var(--green)}
 .ph-row:hover .ph-say{border-color:var(--green)}
 .ph-row.speaking .ph-say{border-color:var(--green-deep)}
-.ph-pt{font-family:var(--serif); font-weight:600; font-size:clamp(1.15rem,1.8vw,1.45rem); line-height:1.2}
+.ph-pt{font-family:var(--serif); font-weight:600; font-size:clamp(1.1rem,1.8vw,1.4rem); line-height:1.2}
 .ph-tr{font-family:var(--mono); font-size:11.5px; color:var(--green); letter-spacing:.02em}
 .ph-ru{font-size:14px; color:var(--ink-soft)}
 .ph-hint{margin-top:1rem; font-family:var(--mono); font-size:11px; letter-spacing:.05em; color:var(--ink-soft)}
 .lang-notes{border-top:1px solid var(--line-strong)}
 .lang-notes h3{font-family:var(--mono); font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--ink-soft); padding:1.1rem 0 .6rem; font-weight:500}
 .sound-note{display:flex; gap:1.1rem; padding:1.1rem 0; border-bottom:1px solid var(--line)}
-.sound-note b{font-family:var(--serif); font-style:italic; font-size:1.5rem; font-weight:600; color:var(--green); line-height:1; min-width:76px}
+.sound-note b{font-family:var(--serif); font-style:italic; font-size:1.4rem; font-weight:600; color:var(--green); line-height:1.1; min-width:76px}
 .sound-note p{font-size:14px; color:var(--ink-soft); line-height:1.55}
-
-/* ============ 06 ГОРОДА ============ */
-.cities-grid{display:grid; grid-template-columns:5fr 7fr; gap:clamp(2rem,6vw,5rem); align-items:start}
-.city-photo{position:sticky; top:92px; border:1px solid var(--line-strong); padding:12px; background:var(--paper)}
-.city-photo .ph{overflow:hidden}
-.city-photo img{width:100%; aspect-ratio:9/10.5; object-fit:cover; filter:saturate(.88) contrast(1.02); transition:opacity .45s ease}
-.city-photo figcaption{
-  display:flex; justify-content:space-between; gap:1rem; padding-top:11px;
-  font-family:var(--mono); font-size:11px; letter-spacing:.08em; color:var(--ink-soft);
-}
-.city-name{
-  display:flex; align-items:baseline; gap:1.1rem; width:100%; text-align:left;
-  font-family:var(--serif); font-weight:600; font-size:clamp(2rem,4.4vw,3.5rem); line-height:1.05;
-  padding:1.15rem .2rem; transition:color .25s;
-}
-.city-idx{font-family:var(--mono); font-style:normal; font-size:11px; letter-spacing:.18em; color:var(--ink-soft); font-weight:400}
-.city:not(.active) .city-name{color:rgba(30,43,36,.42)}
-.city.active .city-name{color:var(--green)}
-.city.active .city-idx{color:var(--gold)}
-.city-info{overflow:hidden; max-height:0; transition:max-height .5s cubic-bezier(.4,0,.2,1)}
-.city-info-in{padding:0 .2rem 1.7rem; max-width:62ch}
-.city-info-in p{color:var(--ink-soft); font-size:15px}
-.city-meta{
-  margin-top:.9rem; font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase;
-  color:var(--ink); border-left:3px solid var(--gold); padding-left:12px; line-height:1.8;
-}
 
 /* ============ 07 ЧЕКЛИСТ ============ */
 .check-progress{display:flex; align-items:center; gap:1.2rem; margin-bottom:2.2rem}
@@ -324,30 +345,79 @@ input[type=range]::-moz-range-thumb{
 .checks label{display:flex; align-items:flex-start; gap:1.1rem; padding:1.05rem .4rem; cursor:pointer; transition:background .2s}
 .checks label:hover{background:rgba(242,183,5,.08)}
 .checks input{position:absolute; opacity:0; width:1px; height:1px}
-.box{
-  flex:0 0 20px; width:20px; height:20px; margin-top:2px; border:1.5px solid var(--ink);
-  display:grid; place-items:center; transition:.2s;
-}
+.box{flex:0 0 20px; width:20px; height:20px; margin-top:2px; border:1.5px solid var(--ink); display:grid; place-items:center; transition:.2s}
 .box svg{opacity:0; transform:scale(.5); transition:.2s}
 .checks li.done .box{background:var(--green); border-color:var(--green)}
 .checks li.done .box svg{opacity:1; transform:scale(1)}
 .checks .txt strong{display:block; font-weight:600; font-size:15.5px; transition:.2s}
 .checks .txt small{font-size:13px; color:var(--ink-soft)}
 .checks li.done .txt strong{text-decoration:line-through; text-decoration-color:var(--gold); text-decoration-thickness:2px; color:var(--ink-soft)}
-.check-done{
-  display:none; margin-top:2.4rem; border:1px solid var(--green); padding:2rem 2.2rem;
-  background:rgba(14,107,69,.06);
-}
+.check-done{display:none; margin-top:2.4rem; border:1px solid var(--green); padding:2rem 2.2rem; background:rgba(14,107,69,.06)}
 .check-done.show{display:block; animation:pop .55s cubic-bezier(.2,.9,.3,1.2)}
 .check-done b{font-family:var(--serif); font-style:italic; font-weight:600; font-size:clamp(1.7rem,3vw,2.4rem); color:var(--green); display:block}
 .check-done span{font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-soft)}
-@keyframes pop{from{opacity:0; transform:translateY(14px) scale(.98)}to{opacity:1; transform:none}}
 
-/* ============ 08 FAQ ============ */
+/* ============ 08 КОНСУЛЬТАЦИЯ ============ */
+#consult{background:var(--paper-2)}
+.consult-grid{display:grid; grid-template-columns:7fr 5fr; gap:clamp(2rem,6vw,5rem); align-items:start}
+.inc{list-style:none; border-top:1px solid var(--line-strong)}
+.inc li{display:flex; gap:1.4rem; align-items:baseline; padding:1.1rem .2rem; border-bottom:1px solid var(--line); font-size:15.5px}
+.inc li i{font-family:var(--mono); font-style:normal; font-size:11px; color:var(--green); letter-spacing:.1em; flex:0 0 34px}
+.nope{margin-top:2.6rem}
+.nope h3{font-family:var(--mono); font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--ink-soft); font-weight:500; margin-bottom:.9rem}
+.nope li{list-style:none; padding:.45rem 0; font-size:14.5px; color:var(--ink-soft)}
+.nope li::before{content:'—'; color:var(--green); margin-right:.7rem}
+.price-card{border:1px solid var(--line-strong); background:var(--paper); padding:clamp(1.8rem,3.5vw,2.6rem); position:sticky; top:92px; box-shadow:8px 8px 0 rgba(30,43,36,.08)}
+.price-tag{font-family:var(--mono); font-size:10.5px; letter-spacing:.24em; text-transform:uppercase; color:var(--ink-soft)}
+.price-num{font-family:var(--serif); font-weight:600; font-size:clamp(3.4rem,6vw,5rem); line-height:1; margin:.25em 0 .05em}
+.price-num small{font-size:.4em; color:var(--green); font-weight:600}
+.price-list{margin:1.4rem 0 1.8rem; font-family:var(--mono); font-size:12px; letter-spacing:.04em; color:var(--ink-soft); line-height:2.1; list-style:none}
+.price-guarantee{border-top:1px solid var(--line); padding-top:1.2rem; font-size:14px; color:var(--ink-soft); line-height:1.6; margin-bottom:1.6rem}
+.price-guarantee b{color:var(--ink)}
+.price-seats{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--green); margin-bottom:1.4rem}
+.quotes{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1rem,2.5vw,1.8rem); margin-top:clamp(3rem,7vh,5rem)}
+.quote{border:1px solid var(--line); background:var(--paper); padding:1.7rem 1.6rem; display:flex; flex-direction:column; gap:1.1rem}
+.quote p{font-family:var(--serif); font-style:italic; font-weight:500; font-size:1.16rem; line-height:1.5}
+.quote footer{font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); margin-top:auto}
+.quote::before{content:'“'; font-family:var(--serif); font-size:3rem; line-height:.5; color:var(--gold); display:block; margin-bottom:.4rem}
+.book-frame{max-width:820px; margin:clamp(3rem,7vh,5rem) auto 0; border:1px solid var(--line-strong); background:var(--paper); padding:clamp(1.8rem,4.5vw,3rem); box-shadow:8px 8px 0 rgba(30,43,36,.08)}
+.book-title{font-family:var(--serif); font-weight:600; font-size:clamp(1.8rem,3.6vw,2.6rem); line-height:1.1; margin-bottom:.5rem}
+.book-sub{color:var(--ink-soft); font-size:15px; margin-bottom:2rem}
+.f-grid{display:grid; grid-template-columns:1fr 1fr; gap:1.6rem 2rem}
+.f-row{display:flex; flex-direction:column; gap:8px}
+.f-row.full{grid-column:1/-1}
+.f-row label{font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-soft)}
+.f-row input,.f-row select{
+  font:inherit; font-size:15px; color:var(--ink); background:transparent;
+  border:0; border-bottom:1.5px solid var(--line-strong); padding:9px 2px; border-radius:0; appearance:none;
+}
+.f-row select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%231E2B24' fill='none' stroke-width='1.4'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 4px center; padding-right:24px}
+.f-row input:focus,.f-row select:focus{outline:none; border-color:var(--green)}
+.quiz-note{grid-column:1/-1; font-family:var(--mono); font-size:11px; letter-spacing:.08em; color:var(--green); display:none}
+.quiz-note.show{display:block}
+.book-actions{margin-top:2.2rem; display:flex; flex-wrap:wrap; align-items:center; gap:1.4rem}
+.book-alt{font-family:var(--mono); font-size:11.5px; letter-spacing:.08em; color:var(--ink-soft)}
+.book-alt a{color:var(--green); text-decoration:underline; text-underline-offset:3px}
+.form-ok{display:none; border:1px solid var(--green); background:rgba(14,107,69,.06); padding:1.8rem 2rem; margin-top:1.8rem; animation:pop .5s cubic-bezier(.2,.9,.3,1.2)}
+.form-ok.show{display:block}
+.form-ok b{font-family:var(--serif); font-style:italic; font-weight:600; font-size:1.6rem; color:var(--green); display:block; margin-bottom:.3rem}
+.form-ok span{font-size:14.5px; color:var(--ink-soft)}
+
+/* ============ FAQ ============ */
 .faq-wrap{max-width:860px}
-#faq .acc-name{font-family:var(--serif); font-weight:600; font-size:clamp(1.3rem,2.4vw,1.8rem)}
-#faq .acc-head{grid-template-columns:1fr 34px}
-#faq .acc-pad{padding-left:.4rem}
+.acc-item{border-bottom:1px solid var(--line)}
+.acc-item:first-child{border-top:1px solid var(--line-strong)}
+.acc-head{
+  width:100%; display:grid; grid-template-columns:1fr 34px; align-items:center; gap:1.2rem;
+  padding:1.35rem .4rem; text-align:left; transition:background .25s;
+}
+.acc-head:hover{background:rgba(242,183,5,.09)}
+.acc-name{font-family:var(--serif); font-weight:600; font-size:clamp(1.3rem,2.4vw,1.8rem); line-height:1.25}
+.acc-ico{justify-self:end; display:grid; place-items:center; width:30px; height:30px; border:1px solid var(--line-strong); transition:transform .35s,background .25s}
+.acc-item.open .acc-ico{transform:rotate(45deg); background:var(--ink); border-color:var(--ink); color:var(--paper)}
+.acc-body{overflow:hidden; max-height:0; transition:max-height .45s cubic-bezier(.4,0,.2,1)}
+.acc-pad{padding:0 .4rem 1.6rem .4rem; max-width:74ch; color:var(--ink-soft); font-size:15px}
+.acc-pad b{color:var(--ink)}
 
 /* ============ ФУТЕР ============ */
 footer.site{background:var(--green-deep); color:var(--cream)}
@@ -355,7 +425,7 @@ footer.site{background:var(--green-deep); color:var(--cream)}
 .foot-marquee .marquee-track{animation-duration:28s}
 .foot-marquee span{color:var(--gold)}
 .foot-body{padding:clamp(3.4rem,8vh,6rem) 0 2.4rem}
-.foot-big{font-family:var(--serif); font-style:italic; font-weight:600; font-size:clamp(3rem,9vw,7.4rem); line-height:1; margin-bottom:2.6rem}
+.foot-big{font-family:var(--serif); font-style:italic; font-weight:600; font-size:clamp(2.6rem,7.5vw,6rem); line-height:1.05; margin-bottom:2.6rem; max-width:16ch}
 .foot-big em{font-style:normal; color:var(--gold)}
 .foot-row{
   display:flex; flex-wrap:wrap; justify-content:space-between; gap:1.4rem 3rem;
@@ -364,53 +434,51 @@ footer.site{background:var(--green-deep); color:var(--cream)}
 }
 .foot-row b{color:var(--cream); letter-spacing:.18em; text-transform:uppercase}
 
-/* ============ ТЕРМОМЕТР ============ */
-.thermo{
+/* ============ ШКАЛА РЕШЕНИЯ ============ */
+.decide{
   position:fixed; left:18px; bottom:18px; z-index:70; width:200px;
   background:var(--paper); border:1px solid var(--line-strong); padding:12px 14px 13px;
   box-shadow:6px 6px 0 rgba(30,43,36,.1);
 }
-.thermo-title{font-family:var(--mono); font-size:9px; letter-spacing:.24em; text-transform:uppercase; color:var(--ink-soft)}
-.thermo-track{position:relative; height:2px; background:rgba(30,43,36,.2); margin:14px 0 10px}
-.thermo-track i{
+.decide-title{font-family:var(--mono); font-size:9px; letter-spacing:.24em; text-transform:uppercase; color:var(--ink-soft)}
+.decide-track{position:relative; height:2px; background:rgba(30,43,36,.2); margin:14px 0 10px}
+.decide-track i{
   position:absolute; top:50%; left:0; width:11px; height:11px; border-radius:50%;
   background:var(--green); border:2px solid var(--paper); box-shadow:0 0 0 1.5px var(--green);
   transform:translate(-5px,-50%); transition:left .15s linear;
 }
-.thermo-legend{display:flex; justify-content:space-between; align-items:baseline}
-.thermo-legend span{font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; color:var(--ink-soft)}
-.thermo-legend b{font-family:var(--serif); font-size:1.45rem; font-weight:600; color:var(--green)}
+.decide-legend{display:flex; justify-content:space-between; align-items:baseline}
+.decide-legend span{font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; color:var(--ink-soft)}
+.decide-legend b{font-family:var(--serif); font-size:1.45rem; font-weight:600; color:var(--green)}
 
 /* ============ АДАПТИВ ============ */
-@media (max-width:1120px){.thermo,.hero-side{display:none}}
+@media (max-width:1120px){.decide,.hero-side{display:none}}
 @media (max-width:960px){
-  .why-grid,.lang-grid,.money-grid,.cities-grid{grid-template-columns:1fr}
-  .money-result{position:static}
-  .city-photo{position:static; max-width:520px}
-  .city-photo img{aspect-ratio:16/11}
+  .why-grid,.lang-grid,.bud-grid,.atlas-grid,.consult-grid{grid-template-columns:1fr}
+  .bud-result,.price-card{position:static}
+  .atlas-panel{position:static}
+  .quotes{grid-template-columns:1fr}
+  .f-grid{grid-template-columns:1fr}
 }
 @media (max-width:680px){
-  .acc-head{grid-template-columns:1fr 30px; gap:.5rem .9rem}
-  .acc-code{grid-row:1} .acc-name{grid-row:1} .acc-ico{grid-row:1}
-  .acc-tag{grid-column:1; grid-row:2; white-space:normal}
-  .acc-pad{padding-left:.4rem}
   .ph-row{grid-template-columns:44px 1fr; gap:.4rem .9rem}
   .ph-say{grid-row:1/4; align-self:start; margin-top:2px}
   .ph-tr{grid-column:2} .ph-ru{grid-column:2}
-  .cpf-banner{grid-template-columns:1fr}
-  .cpf-banner small{grid-column:1}
-  .flight-tel{grid-template-columns:repeat(2,1fr); gap:6px 16px}
+  .bud-row{grid-template-columns:minmax(96px,120px) 1fr; grid-template-rows:auto auto}
+  .bud-state{grid-column:1; text-align:left}
+  .map-tel{grid-template-columns:repeat(2,1fr); gap:6px 16px}
+  .quiz-opt{padding:13px 14px}
 }
 </style>
 </head>
 <body id="top">
 
-<!-- Термометр маршрута -->
-<aside class="thermo" aria-hidden="true">
-  <span class="thermo-title">Температура маршрута</span>
-  <div class="thermo-track"><i id="thermoDot"></i></div>
-  <div class="thermo-legend">
-    <span>МСК −7°</span><b id="thermoNow">−7°</b><span>ГРУ +26°</span>
+<!-- Шкала решения -->
+<aside class="decide" aria-hidden="true">
+  <span class="decide-title">Шкала решения</span>
+  <div class="decide-track"><i id="decideDot"></i></div>
+  <div class="decide-legend">
+    <span>сомнения</span><b id="decideNow">0%</b><span>ясность</span>
   </div>
 </aside>
 
@@ -418,18 +486,18 @@ footer.site{background:var(--green-deep); color:var(--cream)}
   <div class="wrap site-in">
     <a class="brand" href="#top">
       <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect width="26" height="26" fill="#0E6B45"/><path d="M5 20 Q13 5 21 20" stroke="#F2B705" stroke-width="2" fill="none" stroke-dasharray="2 3"/><circle cx="5" cy="20" r="2" fill="#F2EDE2"/><circle cx="21" cy="20" r="2" fill="#F2EDE2"/></svg>
-      <span class="brand-text"><b>РОССИЯ—БРАЗИЛИЯ</b><em>путевой журнал</em></span>
+      <span class="brand-text"><b>ТОЧКА Б</b><em>тест · атлас · консультация</em></span>
     </a>
     <nav class="main">
-      <a href="#why"><i>01</i>Зачем</a>
-      <a href="#flight"><i>02</i>Полёт</a>
-      <a href="#visa"><i>03</i>Визы</a>
-      <a href="#money"><i>04</i>Деньги</a>
-      <a href="#lang"><i>05</i>Язык</a>
-      <a href="#cities"><i>06</i>Города</a>
+      <a href="#quiz"><i>02</i>Тест</a>
+      <a href="#map"><i>03</i>Карта</a>
+      <a href="#atlas"><i>04</i>Страны</a>
+      <a href="#budget"><i>05</i>Бюджет</a>
+      <a href="#lang"><i>06</i>Язык</a>
       <a href="#checklist"><i>07</i>Чеклист</a>
-      <a href="#faq"><i>08</i>Вопросы</a>
+      <a href="#faq"><i>09</i>Вопросы</a>
     </nav>
+    <a class="nav-cta" href="#consult">Консультация</a>
   </div>
 </header>
 
@@ -442,8 +510,8 @@ footer.site{background:var(--green-deep); color:var(--cream)}
       <circle cx="80" cy="440" r="11" fill="none" stroke="rgba(14,107,69,.4)"/>
       <circle cx="1120" cy="440" r="5" fill="#0E6B45"/>
       <circle cx="1120" cy="440" r="11" fill="none" stroke="rgba(14,107,69,.4)"/>
-      <text x="80" y="478" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="2" fill="rgba(30,43,36,.72)">МОСКВА · MOW</text>
-      <text x="1120" y="478" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="2" fill="rgba(30,43,36,.72)">САН-ПАУЛУ · GRU</text>
+      <text x="80" y="478" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="2" fill="rgba(30,43,36,.72)">ТОЧКА А · ТЫ ЗДЕСЬ</text>
+      <text x="1120" y="478" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="2" fill="rgba(30,43,36,.72)">ТОЧКА Б · ШЕСТЬ ВАРИАНТОВ</text>
       <g>
         <path d="M -13 0 L 15 0 L -7 -7 L -2 0 L -7 7 Z" fill="#0E6B45"/>
         <animateMotion dur="10s" repeatCount="indefinite" rotate="auto" calcMode="linear">
@@ -451,22 +519,22 @@ footer.site{background:var(--green-deep); color:var(--cream)}
         </animateMotion>
       </g>
     </svg>
-    <span class="hero-side">República Federativa do Brasil · Ordem e Progresso</span>
+    <span class="hero-side">Остаться · Уехать · Посчитать · Решить</span>
 
     <div class="wrap hero-in">
-      <p class="hero-kicker">Путевой журнал переселенца · выпуск № 01</p>
-      <h1>Из России — <em>в Бразилию</em></h1>
+      <p class="hero-kicker">Точка Б · журнал о переезде и консультации · выпуск № 01</p>
+      <h1>Остаться или <em>уехать?</em></h1>
       <div class="hero-tele">
-        <span><b>11 436</b> км</span>
-        <span>Δ <b>+33 °C</b></span>
-        <span><b>18–24</b> ч в пути</span>
-        <span><b>90</b> дней без визы</span>
+        <span><b>6</b> точек Б</span>
+        <span><b>7</b> вопросов до ясности</span>
+        <span><b>75</b> мин консультация</span>
+        <span><b>12</b> пунктов чеклиста</span>
       </div>
       <div class="hero-cta">
-        <a class="btn btn-primary" href="#why">Читать журнал
+        <a class="btn btn-primary" href="#quiz">Пройти тест готовности
           <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M1 5h11M8.5 1.5 12 5l-3.5 3.5" stroke="currentColor" stroke-width="1.6"/></svg>
         </a>
-        <a class="btn btn-ghost" href="#flight">Сразу к полёту</a>
+        <a class="btn btn-ghost" href="#map">Шесть направлений</a>
       </div>
     </div>
     <div class="hero-scroll">
@@ -477,264 +545,206 @@ footer.site{background:var(--green-deep); color:var(--cream)}
 
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
-      <div><span>Boa viagem</span><span>Saudade</span><span>Виза не нужна</span><span>Pão de queijo</span><span>Bossa nova</span><span>Вечное лето</span><span>Carnaval</span><span>Реал R$</span><span>Ипанема</span><span>Tudo bem</span></div>
-      <div><span>Boa viagem</span><span>Saudade</span><span>Виза не нужна</span><span>Pão de queijo</span><span>Bossa nova</span><span>Вечное лето</span><span>Carnaval</span><span>Реал R$</span><span>Ипанема</span><span>Tudo bem</span></div>
+      <div><span>одна точка А</span><span>шесть точек Б</span><span>Сан-Паулу</span><span>Буэнос-Айрес</span><span>Белград</span><span>Ереван</span><span>Стамбул</span><span>Дубай</span><span>реши со счётом</span><span>Точка Б</span></div>
+      <div><span>одна точка А</span><span>шесть точек Б</span><span>Сан-Паулу</span><span>Буэнос-Айрес</span><span>Белград</span><span>Ереван</span><span>Стамбул</span><span>Дубай</span><span>реши со счётом</span><span>Точка Б</span></div>
     </div>
   </div>
 
-  <!-- ============ 01 ЗАЧЕМ ============ -->
+  <!-- ============ 01 РАЗВИЛКА ============ -->
   <section class="chapter" id="why">
     <div class="wrap">
       <header class="reveal">
-        <p class="chap-meta">Глава 01<i>motivos</i></p>
-        <h2>Зачем именно <em>Бразилия</em></h2>
-        <p class="chap-sub">Пять чисел, из-за которых карта российского переезда в последние годы всё чаще указывает на юг.</p>
+        <p class="chap-meta">Глава 01<i>razvilka</i></p>
+        <h2>Переезд — не побег. <em>Это проект</em></h2>
+        <p class="chap-sub">Для тех, кто месяцами ходит по кругу «пора — страшно — рано — всё-таки пора». Знакомо? Тогда эта страница написана про тебя.</p>
       </header>
       <div class="chap-body why-grid">
         <div class="manifest reveal">
-          <p class="lead">Ещё десять лет назад Бразилия в списке «куда же все едут» стояла где-то после Таиланда и Португалии. Сегодня она догоняет: страна континентального масштаба, куда можно <mark>въехать без визы</mark>, где существует <mark>виза для удалённых работников</mark>, а португальский — при желании — осваивается до уровня «заказать обед и понять счет» за пару месяцев.</p>
-          <p>Это не история про «сбежал». Это история про «переехал и разобрался»: с CPF, банковским счётом в Nubank, апостилями и уроками португальского по вторникам. Журнал ниже — трезвая маршрутная сетка такого переезда, без розовых очков и без чёрного пиара.</p>
-          <p>Всё, что написано дальше, собрано из открытых источников и живого опыта перееезжающих: от датчиков телеметрии на борту до ползунков месячного бюджета.</p>
-          <p class="note">* все цифры — ориентиры на 2025 год; миграционные правила меняются, финальную проверку делайте на gov.br</p>
+          <p class="lead">«Уехать или остаться» — неправильная развилка. Так вопрос ставят эмоции, а они у этой темы всегда на повышенных тонах. Правильный вопрос звучит скучнее, но решает всё: <mark>какой должна быть твоя жизнь через пять лет</mark> — и какая страна дешевле всего доведёт тебя до неё.</p>
+          <p>Проблема большинства застрявших — в нечестном сравнении: «идеальная жизнь там» против «привычной здесь». Любое сравнение становится честным, когда у него появляются цифры: бюджет первого года, маршрут легализации, дедлайн решения. Страх живёт в тумане — цифры его рассеивают.</p>
+          <p>Ниже — тест готовности, карта из шести направлений и честный бюджетный расчёт. НикакойCountry-агитации: у каждой страны свои плюсы и свои ловушки, и наша задача — подобрать под тебя, а не продать тебе. А если захочешь разобрать именно свою ситуацию — в конце страницы есть форма.</p>
+          <p class="note">* цифры на странице — ориентиры на 2025 год; визовые правила меняются, финальную проверку делайте в официальных источниках</p>
         </div>
         <div class="facts reveal">
-          <div class="fact"><span class="fact-num">90/180</span><span class="fact-label">дней в году — безвизово, для туризма</span></div>
-          <div class="fact"><span class="fact-num">US$ 1 500</span><span class="fact-label">порог дохода для визы цифрового кочевника VIVIS</span></div>
-          <div class="fact"><span class="fact-num">18–24 ч</span><span class="fact-label">дорога со стыковкой — прямых рейсов пока нет</span></div>
-          <div class="fact"><span class="fact-num">Δ +33°</span><span class="fact-label">разница температур январской Москвы и Сан-Паулу</span></div>
-          <div class="fact"><span class="fact-num">~16 ₽</span><span class="fact-label">стоит один реал — курс живой, проверяйте перед вылетом</span></div>
+          <div class="fact"><span class="fact-num">2 нед</span><span class="fact-label">минимальная «пробная жизнь», после которой решение перестаёт быть фантазией</span></div>
+          <div class="fact"><span class="fact-num">2–3</span><span class="fact-label">страны — оптимум шорт-листа: больше — паралич, меньше — риск</span></div>
+          <div class="fact"><span class="fact-num">6</span><span class="fact-label">направлений-разборов на этой странице — от трёх часов лёта до другого полушария</span></div>
+          <div class="fact"><span class="fact-num">75 мин</span><span class="fact-label">занимает консультация, после которой появляется маршрут</span></div>
+          <div class="fact"><span class="fact-num">0 ₽</span><span class="fact-label">стоит тест готовности — прямо на этой странице</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ 02 ПОЛЁТ ============ -->
-  <section class="chapter" id="flight">
+  <!-- ============ 02 ТЕСТ ============ -->
+  <section class="chapter" id="quiz">
     <div class="wrap">
       <header class="reveal">
-        <p class="chap-meta">Глава 02<i>o voo</i></p>
-        <h2>Двадцать часов <em>над Атлантикой</em></h2>
-        <p class="chap-sub">Прямых рейсов Москва — Сан-Паулу сейчас нет: стыковки в Дохе, Дубае, Стамбуле или Париже. Ниже — модель вашего перелёта: 11 436 километров, сжатые в шестнадцать секунд бортовой записи.</p>
-      </header>
-      <div class="flight-frame reveal">
-        <canvas id="flightCanvas"></canvas>
-        <div class="flight-tel">
-          <div><span>пройдено</span><b id="tKm">0 км</b></div>
-          <div><span>в пути</span><b id="tTime">00 ч 00 м</b></div>
-          <div><span>скорость</span><b id="tSpd">— км/ч</b></div>
-          <div><span>у земли</span><b id="tTemp">−7 °C</b></div>
-        </div>
-        <div class="flight-status" id="tStatus">MOW · подготовка к вылету</div>
-        <button class="flight-replay" id="flightReplay">повторить полёт</button>
-      </div>
-      <p class="flight-cap reveal">Масштаб времени: 1 секунда ≈ 75 минут полёта. Между двумя точками — один океан, экватор и одна ночь.</p>
-    </div>
-  </section>
-
-  <!-- ============ 03 ВИЗЫ ============ -->
-  <section class="chapter" id="visa">
-    <div class="wrap">
-      <header class="reveal">
-        <p class="chap-meta">Глава 03<i>vistos</i></p>
-        <h2>Шесть легальных <em>маршрутов</em></h2>
-        <p class="chap-sub">Номера здесь условные, правила — нет: перед решением сверяйтесь с gov.br и консульством Бразилии. Строки раскрываются.</p>
+        <p class="chap-meta">Глава 02<i>test</i></p>
+        <h2>Готов ли ты <em>на самом деле</em></h2>
+        <p class="chap-sub">Семь честных вопросов — не про мечты, а про фундамент: деньги, документы, язык, тыл. Никакой магии, только арифметика. Ответы никуда не отправляются.</p>
       </header>
       <div class="chap-body reveal">
-        <div class="acc-item">
-          <button class="acc-head" aria-expanded="false">
-            <span class="acc-code">R·01</span>
-            <span class="acc-name">Туристическое пребывание</span>
-            <span class="acc-tag">до 90 дней · продление до 180/год</span>
-            <span class="acc-ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4"/></svg></span>
-          </button>
-          <div class="acc-body"><div class="acc-pad"><p>Гражданам РФ виза для туризма <b>не нужна</b>: штамп в паспорте на границе. Понадобятся загранпаспорт со сроком действия 6+ месяцев, обратный билет и — по запросу — подтверждение средств. Работать в этом режиме нельзя, но именно так все «разведочные» поездки: месяц посмотреть города, снять жильё, понять — ваше или нет.</p></div></div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-head" aria-expanded="false">
-            <span class="acc-code">R·02</span>
-            <span class="acc-name">VIVIS — виза цифрового кочевника</span>
-            <span class="acc-tag">доход от US$ 1 500/мес</span>
-            <span class="acc-ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4"/></svg></span>
-          </button>
-          <div class="acc-body"><div class="acc-pad"><p>Резиденция для удалёнщиков на <b>1 год с продлением</b>. Требование — доход от US$ 1 500 в месяц из-за рубежа (или эквивалент ~US$ 18 000 на счету). Документы подаются в консульстве или внутри страны при продлении. Даёт CPF, местные права и легальную работу на «своих» удалённых деньгах.</p></div></div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-head" aria-expanded="false">
-            <span class="acc-code">R·03</span>
-            <span class="acc-name">Инвестиции и свой бизнес</span>
-            <span class="acc-tag">резиденция через компанию</span>
-            <span class="acc-ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4"/></svg></span>
-          </button>
-          <div class="acc-body"><div class="acc-pad"><p>Открытие компании с инвестициями <b>от R$ 50 тысяч</b> (пороги периодически пересматривают) даёт основание для резиденции как инвестора или администратора фирмы. Отдельная история — недвижимость: покупка может поддержать заявку, но сама по себе вида не даёт. Схему стоит собирать с местным despachante — миграционным консультантом.</p></div></div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-head" aria-expanded="false">
-            <span class="acc-code">R·04</span>
-            <span class="acc-name">Работа по контракту</span>
-            <span class="acc-tag">VITEM V через работодателя</span>
-            <span class="acc-ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4"/></svg></span>
-          </button>
-          <div class="acc-body"><div class="acc-pad"><p>Классика: бразильский работодатель запрашивает разрешение на найм иностранца, затем вы получаете визу <b>VITEM V</b>. Рынок для иностранцев живой в IT, инженерии, туризме и преподавании языков. Реальный плюс: контракт до переезда снимает вопрос первого дохода.</p></div></div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-head" aria-expanded="false">
-            <span class="acc-code">R·05</span>
-            <span class="acc-name">Учёба</span>
-            <span class="acc-tag">VITEM IV · от языковых курсов</span>
-            <span class="acc-ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4"/></svg></span>
-          </button>
-          <div class="acc-body"><div class="acc-pad"><p>Студенческая виза <b>VITEM IV</b> оформляется даже на языковые курсы от 20 часов в неделю. Государственные вузы Бразилии (USP, UFRJ) — бесплатные и с серьёзным конкурсом; частные — доступнее. Студенческая резиденция продлевается и позволяет легально находиться годами, пока вы учитесь и изучаете страну.</p></div></div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-head" aria-expanded="false">
-            <span class="acc-code">R·06</span>
-            <span class="acc-name">Семья</span>
-            <span class="acc-tag">брак или ребёнок-бразилец</span>
-            <span class="acc-ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4"/></svg></span>
-          </button>
-          <div class="acc-body"><div class="acc-pad"><p>Брак с гражданином Бразилии или ребёнок, рождённый в стране, дают право на <b>постоянную резиденцию</b> практически сразу и сильно ускоряют путь к гражданству — вместо стандартных четырёх лет достаточно одного года. Самый человечный и самый бюрократически простой маршрут.</p></div></div>
-        </div>
-
-        <div class="cpf-banner">
-          <span class="tag">Док № 1</span>
-          <p><b>CPF</b> — одиннадцатизначный налоговый номер, с которого начинается вся жизнь в стране. Без него не купят сим-карту, не откроют банк, не снимут квартиру и не оформят доставку. Оформляется в Receita Federal, отделениях Correios или крупных банках за один визит. Вторым номером идёт <b>RNM</b> — миграционный регистрационный номер, он появляется при запросе резиденции.</p>
-          <small>Первая рабочая неделя в Бразилии = CPF + сим-карта + банковский счёт. Всё остальное подождёт.</small>
+        <div class="quiz-frame">
+          <div class="quiz-top">
+            <span id="quizStep">вопрос 1 / 7</span>
+            <span>тест готовности · без регистрации</span>
+          </div>
+          <div class="quiz-bar"><i id="quizBar"></i></div>
+          <div id="quizBody"></div>
+          <div class="quiz-nav">
+            <button id="quizBack" type="button">← назад</button>
+            <span class="quiz-hint" id="quizHint">выбери один вариант</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ 04 ДЕНЬГИ ============ -->
-  <section class="chapter" id="money">
+  <!-- ============ 03 КАРТА ============ -->
+  <section class="chapter" id="map">
     <div class="wrap">
       <header class="reveal">
-        <p class="chap-meta">Глава 04<i>dinheiro</i></p>
-        <h2>Сколько стоит <em>месяц жизни</em></h2>
-        <p class="chap-sub">Порядок цен на одного человека. Ползунки — ваши, цифры — ориентир на 2025 год. Выберите город для стартового пресета и крутите под себя.</p>
+        <p class="chap-meta">Глава 03<i>karta</i></p>
+        <h2>Одна точка А — <em>шесть точек Б</em></h2>
+        <p class="chap-sub">Схема без географической строгости: чем дальше направление, тем выше и длиннее дуга. Кликни по дуге или точке — страна выберется и в главе 04. Пока не выбрал — карта летает сама.</p>
       </header>
-      <div class="chap-body money-grid">
-        <div class="reveal">
-          <div class="chips" id="cityChips">
-            <button class="chip active" data-rent="3000" data-food="1600" data-misc="700">Сан-Паулу</button>
-            <button class="chip" data-rent="3400" data-food="1600" data-misc="750">Флорианополис</button>
-            <button class="chip" data-rent="3200" data-food="1500" data-misc="700">Рио</button>
-            <button class="chip" data-rent="2500" data-food="1400" data-misc="600">Куритиба</button>
-            <button class="chip" data-rent="1800" data-food="1200" data-misc="500">Глубинка</button>
-          </div>
-          <div class="slider-row">
-            <div class="row-top"><label for="sRent">Жильё — студия вне центра</label><output id="oRent">R$ 3 000</output></div>
-            <input type="range" id="sRent" min="1000" max="8000" step="100" value="3000">
-          </div>
-          <div class="slider-row">
-            <div class="row-top"><label for="sFood">Еда: рынки + забегаловки</label><output id="oFood">R$ 1 600</output></div>
-            <input type="range" id="sFood" min="600" max="4000" step="50" value="1600">
-          </div>
-          <div class="slider-row">
-            <div class="row-top"><label for="sMisc">Транспорт, связь, разное</label><output id="oMisc">R$ 700</output></div>
-            <input type="range" id="sMisc" min="200" max="3000" step="50" value="700">
-          </div>
-          <div class="rate-row">
-            Курс: 1 R$ =
-            <input type="number" id="rateInput" value="16" min="5" max="60" step="0.5" inputmode="decimal">
-            ₽
-            <small>впишите свой, если реал уже не тот</small>
-          </div>
+      <div class="map-frame reveal">
+        <canvas id="routeCanvas"></canvas>
+        <div class="map-tel">
+          <div><span>направление</span><b id="mDest">—</b></div>
+          <div><span>расстояние</span><b id="mKm">—</b></div>
+          <div><span>в пути</span><b id="mTime">—</b></div>
         </div>
-        <div class="money-result reveal">
-          <p class="money-label">Итого в месяц</p>
-          <p class="sum-brl"><i>R$</i> <span id="sumBrl">5 300</span></p>
-          <p class="sum-rub" id="sumRub">≈ 84 800 ₽</p>
-          <div class="split-bar" aria-hidden="true">
-            <span class="sg1" id="barRent"></span><span class="sg2" id="barFood"></span><span class="sg3" id="barMisc"></span>
+        <div class="map-status" id="mStatus">авто-облёт · кликни направление</div>
+        <button class="map-auto" id="mapAuto">авто-облёт</button>
+      </div>
+      <p class="map-cap reveal">Расстояния — по прямой из Москвы. Реальные маршруты со стыковками занимают дольше; точные варианты считаем на консультации.</p>
+    </div>
+  </section>
+
+  <!-- ============ 04 АТЛАС ============ -->
+  <section class="chapter" id="atlas">
+    <div class="wrap">
+      <header class="reveal">
+        <p class="chap-meta">Глава 04<i>atlas</i></p>
+        <h2>Шесть направлений, <em>где нам рады</em></h2>
+        <p class="chap-sub">Страны, куда российский паспорт проходит без очередей за визой, а путь к резиденции реален без брака и миллиона долларов. Кликни по названию — панель слева покажет профиль страны.</p>
+      </header>
+      <div class="chap-body atlas-grid">
+        <aside class="atlas-panel reveal" aria-live="polite">
+          <span class="atlas-code" id="ctryCode">RS</span>
+          <div class="atlas-name" id="ctryName">Сербия</div>
+          <div class="atlas-region" id="ctryRegion">Балканы</div>
+          <p class="atlas-tag" id="ctryTag">«Почти как дома», только спокойнее.</p>
+          <div id="ctryMeters">
+            <div class="meter"><b>Стоимость входа</b><span class="meter-cells" data-m="0"></span></div>
+            <div class="meter"><b>Скорость резиденции</b><span class="meter-cells" data-m="1"></span></div>
+            <div class="meter"><b>Языковой барьер</b><span class="meter-cells" data-m="2"></span></div>
           </div>
-          <p class="legend">
-            <span><i style="background:var(--green)"></i>Жильё <b id="legRent">3 000</b></span>
-            <span><i style="background:var(--gold)"></i>Еда <b id="legFood">1 600</b></span>
-            <span><i style="background:var(--ink)"></i>Прочее <b id="legMisc">700</b></span>
-          </p>
-          <p class="money-note">Для масштаба: обед в забегаловке (prato feito) — около R$ 30, проезд в метро — R$ 5, капучино — R$ 12. Средняя зарплата по стране — порядка R$ 3 000 брутто, в Сан-Паулу — заметно выше. Российские карты в стране не работают — считайте кэш и переводы заранее.</p>
+          <p class="atlas-foot" id="ctryFoot">Лёт из Москвы ≈ 3 ч</p>
+        </aside>
+        <div class="reveal">
+          <article class="cntry" data-code="RS" data-name="Сербия" data-region="Балканы" data-tag="«Почти как дома», только спокойнее." data-meters="2,4,1" data-foot="Лёт из Москвы ≈ 3 ч">
+            <button class="cntry-name"><span class="cntry-idx">01</span>Сербия</button>
+            <div class="cntry-info"><div class="cntry-info-in">
+              <p>Три часа лёта, родственный язык, знакомый менталитет и ноль визовых формальностей на старте. Белград живёт кофейнями и речными закатами, Нови-Сад — тихий университетский город. Банки лояльны к нерезидентам, связь с Россией сохраняется. Минус, о котором честно: зимы серые, а 30 дней безвиза означают, что затягивать с резиденцией нельзя.</p>
+              <p class="cntry-meta">Виза — 30 дней без визы · Бюджет — € 800–1 200/мес<br>ВНЖ — своя фирма / недвижимость / работа · Паспорт — от 3 лет · Язык — сербский</p>
+            </div></div>
+          </article>
+          <article class="cntry" data-code="AM" data-name="Армения" data-region="Кавказ" data-tag="Мягкий старт без стресса и языкового барьера." data-meters="1,5,1" data-foot="Лёт из Москвы ≈ 3 ч">
+            <button class="cntry-name"><span class="cntry-idx">02</span>Армения</button>
+            <div class="cntry-info"><div class="cntry-info-in">
+              <p>Ереван — город, где русский слышен на каждом углу, банки принимают привычные карты, а ИП открывается за день. ЕАЭС даёт право работать без разрешений, горы и коньяк — по выходным. Идеальная «первая зима за границей»: все сложности переезда тренируются здесь в щадящем режиме, прежде чем идти в дальнее зарубежье.</p>
+              <p class="cntry-meta">Виза — не нужна · Бюджет — US$ 700–1 100/мес<br>ВНЖ — работа / ИП, почти автоматически · Гражданство — от 3 лет · Язык — русский повсеместно</p>
+            </div></div>
+          </article>
+          <article class="cntry" data-code="TR" data-name="Турция" data-region="Анатолия и два моря" data-tag="Море, привычная инфраструктура и быстрый перелёт." data-meters="2,3,3" data-foot="Лёт из Москвы ≈ 4 ч 30 м">
+            <button class="cntry-name"><span class="cntry-idx">03</span>Турция</button>
+            <div class="cntry-info"><div class="cntry-info-in">
+              <p>Стамбул — город-миллионник на двух континентах, Анталья — русскоязычная прибрежная вселенная со школами и детскими врачами. 60 дней без визы, икамет (ВНЖ) через аренду, работу или учёбу, гражданство за инвестиции в недвижимость — дорожка известная и проверенная тысячами. Минус: высокая инфляция, аренда растёт быстрее зарплат.</p>
+              <p class="cntry-meta">Виза — 60 дней без визы · Бюджет — US$ 900–1 500/мес<br>ВНЖ — икамет: аренда / работа / учёба · Гражданство — за инвестиции от US$ 400k · Язык — турецкий</p>
+            </div></div>
+          </article>
+          <article class="cntry" data-code="AE" data-name="ОАЭ" data-region="Персидский залив" data-tag="Ноль налогов — и ноль иллюзий по ценам." data-meters="5,4,2" data-foot="Лёт из Москвы ≈ 5 ч 30 м">
+            <button class="cntry-name"><span class="cntry-idx">04</span>ОАЭ</button>
+            <div class="cntry-info"><div class="cntry-info-in">
+              <p>Дубай зимними месяцами — это рай: солнце, порядок, безопасность, английский на каждом шагу и ВНЖ для удалёнщиков с доходом от US$ 3 500. Летом — жара под +45 и цены, которые объясняют, почему эмигранты здесь либо хорошо зарабатывают, либо быстро уезжают. Направление для тех, у кого доход уже в валюте.</p>
+              <p class="cntry-meta">Виза — 90 дней по прилёту · Бюджет — US$ 2 500–3 500/мес<br>ВНЖ — удалёнка / фриланс / недвижимость · Язык — английский</p>
+            </div></div>
+          </article>
+          <article class="cntry" data-code="BR" data-name="Бразилия" data-region="Южная Америка" data-tag="Начать с чистого листа, но по-крупному." data-meters="3,3,4" data-foot="Лёт из Москвы от 18 ч · со стыковкой">
+            <button class="cntry-name"><span class="cntry-idx">05</span>Бразилия</button>
+            <div class="cntry-info"><div class="cntry-info-in">
+              <p>Континентальная страна с самым заметным русскоязычным комьюнити Латинской Америки: 90/180 дней без визы, отдельная резиденция для удалёнщиков VIVIS (доход от US$ 1 500/мес), резиденция через свой бизнес от R$ 50 тысяч. Тёплая круглый год, дешёвая еда с рынков, вечный праздник на улице. Бюрократия честная и проходимая — с одиннадцатизначного налогового номера CPF, который открывает всё: сим-карту, банк, аренду.</p>
+              <p class="cntry-meta">Виза — 90/180 дней без визы · Бюджет — R$ 5 000–7 500/мес<br>ВНЖ — VIVIS / бизнес / работа / учёба · Паспорт — от 4 лет (1 год в браке) · Язык — португальский</p>
+            </div></div>
+          </article>
+          <article class="cntry" data-code="AR" data-name="Аргентина" data-region="Южная Америка" data-tag="Самый быстрый паспорт континента — за два года." data-meters="3,5,3" data-foot="Лёт из Москвы от 20 ч · со стыковкой">
+            <button class="cntry-name"><span class="cntry-idx">06</span>Аргентина</button>
+            <div class="cntry-info"><div class="cntry-info-in">
+              <p>Европейская культура на южноамериканской земле: Буэнос-Айрес — это стейки, книжные магазины в старых театрах и лучший уют на континенте. 90 дней без визы, ВНЖ цифрового кочевника и rentista, а гражданство после двух лет легального проживания — одно из самых быстрых в мире. Минус, о котором честно: экономика нестабильна, бюджет считают в долларах, а не в песо.</p>
+              <p class="cntry-meta">Виза — 90 дней без визы · Бюджет — US$ 900–1 400/мес<br>ВНЖ — номад / rentista / работа · Паспорт — через 2 года резиденции · Язык — испанский</p>
+            </div></div>
+          </article>
+          <p class="atlas-more"><b>Ещё на радаре:</b> Казахстан и Кыргызстан — без виз и с работой внутри ЕАЭС; Таиланд — 60 дней без визы; Вьетнам — e-visa за пару дней. Под твой профиль подберём на консультации.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ 05 ЯЗЫК ============ -->
-  <section class="chapter" id="lang">
+  <!-- ============ 05 БЮДЖЕТ ============ -->
+  <section class="chapter" id="budget">
     <div class="wrap">
       <header class="reveal">
-        <p class="chap-meta">Глава 05<i>idioma</i></p>
-        <h2>Десять фраз на <em>первый день</em></h2>
-        <p class="chap-sub">Бразильский португальский мягче и певучее европейского. Кликните по строке — браузер произнесёт фразу вслух (синтез речи pt-BR).</p>
+        <p class="chap-meta">Глава 05<i>dengi</i></p>
+        <h2>Куда хватает <em>твоего бюджета</em></h2>
+        <p class="chap-sub">Полосы — типичные месячные расходы одного человека: аренда студии, еда, транспорт. Двигай ползунок — шкала честно покажет, где тебе уже можно, а где пока рано.</p>
       </header>
-      <div class="chap-body lang-grid">
+      <div class="chap-body bud-grid">
         <div class="reveal">
-          <div class="phrasebook">
-            <div class="ph-row" data-pt="Bom dia!"><span class="ph-say"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 5.5v4h2.5L8 12.5v-10L4.5 5.5H2z" fill="currentColor"/><path d="M10 5.5a3 3 0 0 1 0 4M11.8 4a5.4 5.4 0 0 1 0 7" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg></span><span class="ph-pt">Bom dia!</span><span class="ph-tr">[бон ДИ-а]</span><span class="ph-ru">Доброе утро!</span></div>
-            <div class="ph-row" data-pt="Boa tarde!"><span class="ph-say"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 5.5v4h2.5L8 12.5v-10L4.5 5.5H2z" fill="currentColor"/><path d="M10 5.5a3 3 0 0 1 0 4M11.8 4a5.4 5.4 0 0 1 0 7" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg></span><span class="ph-pt">Boa tarde!</span><span class="ph-tr">[бО-а ТАР-джи]</span><span class="ph-ru">Добрый день!</span></div>
-            <div class="ph-row" data-pt="Tudo bem?"><span class="ph-say"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 5.5v4h2.5L8 12.5v-10L4.5 5.5H2z" fill="currentColor"/><path d="M10 5.5a3 3 0 0 1 0 4M11.8 4a5.4 5.4 0 0 1 0 7" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg></span><span class="ph-pt">Tudo bem!</span><span class="ph-tr">[ТУ-ду БЕЙН]</span><span class="ph-ru">Всё хорошо! (и привет, и «как дела?»)</span></div>
-            <div class="ph-row" data-pt="Obrigado! Obrigada!"><span class="ph-say"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 5.5v4h2.5L8 12.5v-10L4.5 5.5H2z" fill="currentColor"/><path d="M10 5.5a3 3 0 0 1 0 4M11.8 4a5.4 5.4 0 0 1 0 7" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg></span><span class="ph-pt">Obrigado / Obrigada</span><span class="ph-tr">[о-бри-ГА-ду / -ДА]</span><span class="ph-ru">Спасибо (говорит мужчина / женщина)</span></div>
-            <div class="ph-row" data-pt="Quanto custa?"><span class="ph-say"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 5.5v4h2.5L8 12.5v-10L4.5 5.5H2z" fill="currentColor"/><path d="M10 5.5a3 3 0 0 1 0 4M11.8 4a5.4 5.4 0 0 1 0 7" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg></span><span class="ph-pt">Quanto custa?</span><span class="ph-tr">[КУАН-ту КУС-та]</span><span class="ph-ru">Сколько стоит?</span></div>
-            <div class="ph-row" data-pt="Onde fica o banheiro?"><span class="ph-say"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 5.5v4h2.5L8 12.5v-10L4.5 5.5H2z" fill="currentColor"/><path d="M10 5.5a3 3 0 0 1 0 4M11.8 4a5.4 5.4 0 0 1 0 7" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg></span><span class="ph-pt">Onde fica o banheiro?</span><span class="ph-tr">[ОН-джи ФИ-ка у бан-ЙЕЙ-ру]</span><span class="ph-ru">Где здесь туалет?</span></div>
-            <div class="ph-row" data-pt="Não falo português"><span class="ph-say"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 5.5v4h2.5L8 12.5v-10L4.5 5.5H2z" fill="currentColor"/><path d="M10 5.5a3 3 0 0 1 0 4M11.8 4a5.4 5.4 0 0 1 0 7" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg></span><span class="ph-pt">Não falo português</span><span class="ph-tr">[НАУН ФА-лу пор-ту-ГЕЙШ]</span><span class="ph-ru">Я не говорю по-португальски</span></div>
-            <div class="ph-row" data-pt="Uma cerveja, por favor"><span class="ph-say"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 5.5v4h2.5L8 12.5v-10L4.5 5.5H2z" fill="currentColor"/><path d="M10 5.5a3 3 0 0 1 0 4M11.8 4a5.4 5.4 0 0 1 0 7" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg></span><span class="ph-pt">Uma cerveja, por favor</span><span class="ph-tr">[У-ма сер-ВЕ-жа, пор фа-ВОР]</span><span class="ph-ru">Одно пиво, пожалуйста</span></div>
-            <div class="ph-row" data-pt="A conta, por favor"><span class="ph-say"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 5.5v4h2.5L8 12.5v-10L4.5 5.5H2z" fill="currentColor"/><path d="M10 5.5a3 3 0 0 1 0 4M11.8 4a5.4 5.4 0 0 1 0 7" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg></span><span class="ph-pt">A conta, por favor</span><span class="ph-tr">[а КОН-та, пор фа-ВОР]</span><span class="ph-ru">Счёт, пожалуйста</span></div>
-            <div class="ph-row" data-pt="Com licença"><span class="ph-say"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 5.5v4h2.5L8 12.5v-10L4.5 5.5H2z" fill="currentColor"/><path d="M10 5.5a3 3 0 0 1 0 4M11.8 4a5.4 5.4 0 0 1 0 7" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg></span><span class="ph-pt">Com licença</span><span class="ph-tr">[кон ли-СЕН-са]</span><span class="ph-ru">Извините / позвольте пройти</span></div>
+          <div class="budget-set">
+            <div class="row-top"><label for="budget">Твой бюджет в месяц</label><output id="budgetOut">100 000 ₽</output></div>
+            <input type="range" id="budget" min="40000" max="350000" step="5000" value="100000">
+            <p class="bud-note">курс-ориентир: 1 US$ ≈ 90 ₽ · 1 € ≈ 100 ₽ · на консультации считаем по текущему курсу и твоим привычкам</p>
           </div>
-          <p class="ph-hint">Если голоса pt-BR в системе нет — фраза подсветится без звука; голос можно добавить в настройках ОС.</p>
+          <div id="budRows"></div>
         </div>
-        <aside class="lang-notes reveal">
-          <h3>Как звучит бразильский</h3>
-          <div class="sound-note"><b>R → Х</b><p>«R» в начале слова и «rr» внутри звучат как лёгкое «х»: Rio — «ХИ-у», carro — «КА-ху». С этого места начинается акцент, за который вас полюбят.</p></div>
-          <div class="sound-note"><b>ÃO</b><p>Носовое «аун» без явного «нг»: não — «наун», pão — «паун». Пять носовых гласных — главная гимнастика первых недель.</p></div>
-          <div class="sound-note"><b>TI → ЧИ</b><p>«T» и «D» перед «i» смягчаются: noite — «НОЙ-чи», cidade — «си-ДА-джи». Европейский португалец так не скажет — и это выдаёт бразильца с головой.</p></div>
+        <aside class="bud-result reveal">
+          <p class="money-label" style="font-family:var(--mono); font-size:10.5px; letter-spacing:.24em; text-transform:uppercase; color:var(--ink-soft)">открыто направлений</p>
+          <p class="bud-big"><span id="budCount">3</span> <i>из 6</i></p>
+          <p class="bud-verdict" id="budVerdict"></p>
+          <p class="bud-verdict" style="min-height:0; font-family:var(--mono); font-size:11px; letter-spacing:.05em">чёрная полоса = диапазон типичных расходов · вертикальная риска = твой бюджет</p>
+          <div class="bud-cta">
+            <a class="btn btn-primary" href="#book" style="width:100%; justify-content:center">Обсудить мой вариант
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M1 5h11M8.5 1.5 12 5l-3.5 3.5" stroke="currentColor" stroke-width="1.6"/></svg>
+            </a>
+          </div>
         </aside>
       </div>
     </div>
   </section>
 
-  <!-- ============ 06 ГОРОДА ============ -->
-  <section class="chapter" id="cities">
+  <!-- ============ 06 ЯЗЫК ============ -->
+  <section class="chapter" id="lang">
     <div class="wrap">
       <header class="reveal">
-        <p class="chap-meta">Глава 06<i>cidades</i></p>
-        <h2>Четыре города <em>на выбор</em></h2>
-        <p class="chap-sub">Два мегаполиса, остров и «бразильская Европа». Кликните по названию — фотография и координаты поменяются.</p>
+        <p class="chap-meta">Глава 06<i>yazyk</i></p>
+        <h2>Пять фраз на <em>шести языках</em></h2>
+        <p class="chap-sub">Выбери страну — получишь первые слова с транскрипцией. Кликни по строке, и браузер произнесёт фразу вслух. Десять минут в день с такого набора и начинается язык.</p>
       </header>
-      <div class="chap-body cities-grid">
-        <figure class="city-photo reveal">
-          <div class="ph"><img id="cityImg" src="https://picsum.photos/seed/br-saopaulo-77/900/1100.jpg" alt="Город в Бразилии"></div>
-          <figcaption><span id="cityCoords">23°33′ S · 46°38′ W</span><span id="cityPop">12,3 млн</span></figcaption>
-        </figure>
-        <div class="city-list reveal">
-          <article class="city acc-item" data-img="https://picsum.photos/seed/br-saopaulo-77/900/1100.jpg" data-coords="23°33′ S · 46°38′ W" data-pop="12,3 млн">
-            <button class="city-name"><span class="city-idx">01</span>Сан-Паулу</button>
-            <div class="city-info"><div class="city-info-in">
-              <p>Двигатель страны: работа, офисы, рестораны на любой вкус и бессонные авеню. Здесь проходит самый большой в Латинской Америке, здесь же — самая заметная русскоязычная тусовка и аэропорт GRU, ваши ворота в континент. Минус честно: шум, пробки и цены выше среднего.</p>
-              <p class="city-meta">Финансовый центр · аэропорт GRU · район Вила-Мадалена</p>
-            </div></div>
-          </article>
-          <article class="city" data-img="https://picsum.photos/seed/br-floripa-42/900/1100.jpg" data-coords="27°36′ S · 48°33′ W" data-pop="570 тыс.">
-            <button class="city-name"><span class="city-idx">02</span>Флорианополис</button>
-            <div class="city-info"><div class="city-info-in">
-              <p>Остров с сорока двумя пляжами и IT-зарплатами — «Флорипа» давно стала бразильской кремниевой долиной. Идеальная арифметика удалёнщика: коворкинг утром, серфинг после обеда. Летом остров поднимает цены и заторы на единственном мосту — но сентябрь всё исправляет.</p>
-              <p class="city-meta">42 пляжа · IT-хаб · столица штата Санта-Катарина</p>
-            </div></div>
-          </article>
-          <article class="city" data-img="https://picsum.photos/seed/br-rio-03/900/1100.jpg" data-coords="22°54′ S · 43°10′ W" data-pop="6,7 млн">
-            <button class="city-name"><span class="city-idx">03</span>Рио-де-Жанейро</button>
-            <div class="city-info"><div class="city-info-in">
-              <p>Город-открытка: Копакабана, Сахарная Голова, гора Корковаду и закаты Арпоадора, ради которых прощают многое. Безопасность здесь — вопрос района, а не города: правила простые — телефон в кармане, такси по приложению, район знать заранее. Для жизни сложнее, для влюблённости — проще некуда.</p>
-              <p class="city-meta">Копакабана · Сахарная Голова · карнавал</p>
-            </div></div>
-          </article>
-          <article class="city" data-img="https://picsum.photos/seed/br-curitiba-11/900/1100.jpg" data-coords="25°26′ S · 49°16′ W" data-pop="1,9 млн">
-            <button class="city-name"><span class="city-idx">04</span>Куритиба</button>
-            <div class="city-info"><div class="city-info-in">
-              <p>Юг страны и наследие европейской волны XIX века: планировка, ботанический сад, легендарная система скоростных автобусов и зимы, когда реально хочется свитер — редкость для Бразилии. Тихий, собранный, «удобный» город, который часто выбирают семьи.</p>
-              <p class="city-meta">Прохладный юг · BRT-транспорт · город-план</p>
-            </div></div>
-          </article>
+      <div class="chap-body lang-grid">
+        <div class="reveal">
+          <div class="chips" id="langChips"></div>
+          <div id="langRows"></div>
+          <p class="ph-hint" id="langNote"></p>
         </div>
+        <aside class="lang-notes reveal">
+          <h3>Три честных факта о языке</h3>
+          <div class="sound-note"><b>A0→A1</b><p>Уровень «заказать обед, спросить цену, понять счёт» реально поднимается за месяц десяти фраз в день. Это не про грамматику — это про смелость открывать рот первым.</p></div>
+          <div class="sound-note"><b>EN</b><p>В Дубае и мегаполисах английский решает быт, но не бюрократию: ВНЖ, договор аренды и врач всё равно будут на местном. Английский — подушка, не замена.</p></div>
+          <div class="sound-note"><b>ФОН</b><p>Сербский и армянский дают фору: половина слов знакома, в Ереване по-русски поймут везде. Если страшно начинать с нуля — начинай с «почти родного».</p></div>
+        </aside>
       </div>
     </div>
   </section>
@@ -743,9 +753,9 @@ footer.site{background:var(--green-deep); color:var(--cream)}
   <section class="chapter" id="checklist">
     <div class="wrap">
       <header class="reveal">
-        <p class="chap-meta">Глава 07<i>mala pronta</i></p>
-        <h2>Двенадцать пунктов <em>до посадки</em></h2>
-        <p class="chap-sub">Всё между решением и самолётом. Отмечайте — прогресс сохранится в этом браузере до вашего возвращения.</p>
+        <p class="chap-meta">Глава 07<i>spisok</i></p>
+        <h2>Двенадцать пунктов <em>до решения</em></h2>
+        <p class="chap-sub">Универсальные для всех шести направлений. Отмечайте — прогресс сохранится в этом браузере до вашего возвращения.</p>
       </header>
       <div class="chap-body reveal" style="max-width:860px">
         <div class="check-progress">
@@ -753,70 +763,192 @@ footer.site{background:var(--green-deep); color:var(--cream)}
           <b id="checkPct">0%</b>
         </div>
         <ul class="checks" id="checkList">
-          <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>Загранпаспорт</strong><small>действует минимум 6 месяцев на дату въезда</small></span></label></li>
-          <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>Обратный билет</strong><small>его спросят и на стойке регистрации, и на границе</small></span></label></li>
-          <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>Апостиль документов</strong><small>свидетельства о рождении и браке, диплом — заранее</small></span></label></li>
-          <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>Наличные USD</strong><small>1–2 тысячи на первый месяц: карты РФ в стране не работают</small></span></label></li>
-          <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>Жильё на 2–4 недели</strong><small>букинг до вылета, чтобы осмотреться без паники</small></span></label></li>
-          <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>CPF</strong><small>первый рабочий день: Receita Federal, Correios или банк</small></span></label></li>
-          <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>Сим-карта</strong><small>Vivo, Claro или TIM — понадобится CPF</small></span></label></li>
-          <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>Банковский счёт</strong><small>Nubank или Inter: CPF плюс местный адрес</small></span></label></li>
+          <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>Загранпаспорт</strong><small>действует минимум 6 месяцев и с чистыми страницами</small></span></label></li>
+          <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>Подушка на 3–6 месяцев</strong><small>жизнь в стране-кандидате, а не «как-нибудь перебьюсь»</small></span></label></li>
+          <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>Доход, который берётся с собой</strong><small>удалёнка, фриланс, сбережения — что-то одно должно работать из любой точки</small></span></label></li>
+          <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>Апостиль документов</strong><small>свидетельства о рождении и браке, диплом — заранее, это самый долгий пункт</small></span></label></li>
+          <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>Пробная поездка 2+ недели</strong><small>жить «по-местному»: аренда, магазины, будни — не путёвка и не отпуск у бассейна</small></span></label></li>
           <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>Медстраховка</strong><small>на первые месяцы, до оформления местных планов</small></span></label></li>
-          <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>Португальский A1</strong><small>десять фраз из главы 05 — уже хорошее начало</small></span></label></li>
-          <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>Каналы переводов</strong><small>продумать, как заводить деньги легально и с минимальной комиссией</small></span></label></li>
+          <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>Связь по прилёту</strong><small>eSIM до вылета или местная сим — интернет нужен с первых минут</small></span></label></li>
+          <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>Каналы переводов</strong><small>легальные, с понятной комиссией — это самая подвижная часть бюджета</small></span></label></li>
+          <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>Язык до A1</strong><small>пять фраз из главы 06 — уже хорошее начало</small></span></label></li>
           <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>Сканы всех документов</strong><small>в облако, дважды, в разных местах</small></span></label></li>
+          <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>Дата решения</strong><small>конкретный день, когда выбор делается — иначе «когда-нибудь» длится вечно</small></span></label></li>
+          <li><label><input type="checkbox"><span class="box"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#EFE9DC" stroke-width="2"/></svg></span><span class="txt"><strong>План Б</strong><small>что делаете, если через полгода не зайдёт — прописанный план Б снижает страх на старте</small></span></label></li>
         </ul>
         <div class="check-done" id="checkDone">
-          <b>Tudo pronto — boa viagem!</b>
-          <span>готовность 100% · можно бронировать</span>
+          <b>Фундамент готов.</b>
+          <span>осталось выбрать страну — глава 04 ждёт</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ 08 FAQ ============ -->
+  <!-- ============ 08 КОНСУЛЬТАЦИЯ ============ -->
+  <section class="chapter" id="consult">
+    <div class="wrap">
+      <header class="reveal">
+        <p class="chap-meta">Глава 08<i>sovet</i></p>
+        <h2>Из «хочу уехать» — <em>в план на 30 дней</em></h2>
+        <p class="chap-sub">Один разговор, после которого перестаёт кружиться голова: что делать, в каком порядке и на какие деньги.</p>
+      </header>
+      <div class="chap-body">
+        <div class="consult-grid reveal">
+          <div>
+            <ul class="inc">
+              <li><i>01</i>Разбор твоей ситуации: доход, семья, сроки, страхи — без осуждения и «в твоём возрасте пора»</li>
+              <li><i>02</i>Шорт-лист из 2–3 стран под твой бюджет и тип дохода — с честными минусами каждой</li>
+              <li><i>03</i>Маршрут легализации по каждой стране: въезд → ВНЖ → что дальше, по шагам и срокам</li>
+              <li><i>04</i>Бюджетная модель первого года в таблице — с курсом, комиссиями и подушкой</li>
+              <li><i>05</i>Чеклист первых 30 дней после решения: какие кнопки жать на первой неделе</li>
+            </ul>
+            <div class="nope">
+              <h3>Честно: кому консультация не нужна</h3>
+              <ul>
+                <li>нет дохода, который можно взять с собой, и планов его создать — сначала это;</li>
+                <li>нужно, чтобы «всё сделали за вас» — мы составляем маршрут, оформляете его вы;</li>
+                <li>ищете волшебника — решения за вас не примет ни консультант, ни тест выше.</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="price-card">
+            <p class="price-tag">формат</p>
+            <p class="price-num">75 <small>минут</small></p>
+            <ul class="price-list">
+              <li>Zoom или Telegram-видео</li>
+              <li>запись разговора — ваша навсегда</li>
+              <li>конспект с цифрами на почте через 24 часа</li>
+            </ul>
+            <p class="price-num" style="font-size:clamp(2.6rem,4.5vw,3.6rem)">6 900 <small>₽</small></p>
+            <p class="price-seats">8 разговоров в месяц — не больше</p>
+            <p class="price-guarantee"><b>Гарантия:</b> если после разговора не стало яснее — верну деньги целиком. Спорить не буду.</p>
+            <a class="btn btn-primary" href="#book" style="width:100%; justify-content:center">Выбрать слот
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M1 5h11M8.5 1.5 12 5l-3.5 3.5" stroke="currentColor" stroke-width="1.6"/></svg>
+            </a>
+          </aside>
+        </div>
+
+        <div class="quotes reveal">
+          <figure class="quote">
+            <p>Пришла с вопросом «уезжать или нет», а ушла с планом на 14 месяцев и ощущением, что наконец-то выдохнула. Пока остаюсь в Перми — и это тоже результат разговора.</p>
+            <footer>Мария · Пермь</footer>
+          </figure>
+          <figure class="quote">
+            <p>Считал, что моё — это далёкая Латинская Америка. По таблице бюджета увидел, что тяну пока Сербию и Армению. Съездил в Белград в мае, в августе подавал на ВНЖ.</p>
+            <footer>Дмитрий · Москва</footer>
+          </figure>
+          <figure class="quote">
+            <p>Полтора часа — и вместо паники таблица: сколько стоит, куда платить, что делать в первый понедельник. Мы с мужем перестали ссориться о переезде.</p>
+            <footer>Алина и Пётр · Санкт-Петербург</footer>
+          </figure>
+        </div>
+
+        <!-- ФОРМА ЗАЯВКИ -->
+        <div class="book-frame reveal" id="book">
+          <h3 class="book-title">Записаться на консультацию</h3>
+          <p class="book-sub">Отвечаю лично, в течение суток. Обычно быстрее.</p>
+          <form id="bookForm" novalidate>
+            <div class="f-grid">
+              <div class="f-row">
+                <label for="fName">Как тебя зовут</label>
+                <input type="text" id="fName" name="name" required placeholder="Имя">
+              </div>
+              <div class="f-row">
+                <label for="fContact">Telegram или почта</label>
+                <input type="text" id="fContact" name="contact" required placeholder="@username или e-mail">
+              </div>
+              <div class="f-row">
+                <label for="fCountry">Страна-фаворит</label>
+                <select id="fCountry" name="country">
+                  <option value="Пока не знаю">Пока не знаю — подберём</option>
+                  <option>Сербия</option>
+                  <option>Армения</option>
+                  <option>Турция</option>
+                  <option>ОАЭ</option>
+                  <option>Бразилия</option>
+                  <option>Аргентина</option>
+                </select>
+              </div>
+              <div class="f-row">
+                <label for="fStage">Готовность</label>
+                <select id="fStage" name="stage">
+                  <option value="Только размышляю">Только размышляю</option>
+                  <option value="Собираю информацию">Собираю информацию</option>
+                  <option value="Готов действовать">Готов действовать</option>
+                </select>
+              </div>
+              <div class="f-row full">
+                <label for="fPain">Главный вопрос, который не даёт спать</label>
+                <input type="text" id="fPain" name="pain" placeholder="необязательно, но помогает подготовиться">
+              </div>
+              <p class="quiz-note" id="quizNote">твой результат теста подставлен в форму — можно менять</p>
+            </div>
+            <div class="book-actions">
+              <button class="btn btn-primary" type="submit">Отправить заявку
+                <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M1 5h11M8.5 1.5 12 5l-3.5 3.5" stroke="currentColor" stroke-width="1.6"/></svg>
+              </button>
+              <span class="book-alt">или сразу написать: <a href="https://t.me/tvoi_username" target="_blank" rel="noopener">t.me/tvoi_username</a></span>
+            </div>
+            <div class="form-ok" id="formOk">
+              <b>Заявка принята</b>
+              <span>Отвечу лично в течение суток. Если хочется прямо сейчас — жми в Telegram, я там быстрее.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 09 FAQ ============ -->
   <section class="chapter" id="faq">
     <div class="wrap">
       <header class="reveal">
-        <p class="chap-meta">Глава 08<i>perguntas</i></p>
+        <p class="chap-meta">Глава 09<i>voprosy</i></p>
         <h2>Честные <em>ответы</em></h2>
-        <p class="chap-sub">Вопросы из каждого чата переезжающих — без прикрас, в обе стороны.</p>
+        <p class="chap-sub">Вопросы из каждого разговора — про решение, про страны и про саму консультацию.</p>
       </header>
       <div class="chap-body faq-wrap reveal">
         <div class="acc-item">
           <button class="acc-head" aria-expanded="false">
-            <span class="acc-name">Это вообще безопасно?</span>
+            <span class="acc-name">Я вообще не знаю, хочу ли уезжать. Это ко мне?</span>
             <span class="acc-ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4"/></svg></span>
           </button>
-          <div class="acc-body"><div class="acc-pad"><p>Бразилия разная: в Копакабане и в соседней фавеле — разные миры, и оба в одном городе. Правила просты и быстро становятся фоном: не светить телефоном на улице, знать «тревожные» районы, такси — только по приложению, ночью — на Uber. Через месяц вы ловите себя на том, что делаете это не думая.</p></div></div>
+          <div class="acc-body"><div class="acc-pad"><p>Да, именно к вам. Консультация-разведка существует как раз для этого: мы считаем не «как сбежать», а «что вам даст каждая развилка». Допустимый и частый итог разговора — <b>«остаюсь, но готовлюсь»</b> с планом на год. Это не провал консультации, это её нормальный результат.</p></div></div>
         </div>
         <div class="acc-item">
           <button class="acc-head" aria-expanded="false">
-            <span class="acc-name">Можно ли прожить без португальского?</span>
+            <span class="acc-name">Чем это отличается от чатов, блогов и YouTube?</span>
             <span class="acc-ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4"/></svg></span>
           </button>
-          <div class="acc-body"><div class="acc-pad"><p>Первые недели — да: в мегаполисах выручат английский и переводчик. Но бюрократия, медицина, договор аренды и настоящая дружба — только на португальском. Язык здесь не опция, а главный ускоритель всего остального; бразильцы снисходительны к акценту и бесконечно рады любой попытке.</p></div></div>
+          <div class="acc-body"><div class="acc-pad"><p>Чаты и видео — это чужие истории, из которых вы вручную собираете гипотезы. Консультация — это ваш случай, помноженный на актуальные цифры: бюджет, маршруты, сроки. Плюс ответственность: если я ошибусь в расчёте, мне дороже — репутация и гарантия возврата работают в обе стороны.</p></div></div>
         </div>
         <div class="acc-item">
           <button class="acc-head" aria-expanded="false">
-            <span class="acc-name">Как быть с российскими картами и деньгами?</span>
+            <span class="acc-name">Вы агентство? Оформляете документы за меня?</span>
             <span class="acc-ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4"/></svg></span>
           </button>
-          <div class="acc-body"><div class="acc-pad"><p>Российские Visa и Mastercard за границей не работают — это факт, под который подстраиваются. Рабочая схема: наличные USD на первый месяц, затем местный счёт (Nubank открывается в приложении по CPF) и переводы через сервисы, работающие с Бразилией. Лимиты и каналы проверяйте на момент переезда — это самая подвижная часть бюджета.</p></div></div>
+          <div class="acc-body"><div class="acc-pad"><p>Нет. Я консультирую и составляю маршрут: что, где, в каком порядке и за сколько. Документы вы оформляете сами — или с проверенными партнёрами на месте (юристы, релокационные агентства, риелторы), которых подскажу по запросу. Комиссий с вас за их услуги я не беру.</p></div></div>
         </div>
         <div class="acc-item">
           <button class="acc-head" aria-expanded="false">
-            <span class="acc-name">Правда, что там дешевле жить?</span>
+            <span class="acc-name">А если после разговора я решу остаться?</span>
             <span class="acc-ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4"/></svg></span>
           </button>
-          <div class="acc-body"><div class="acc-pad"><p>Еда с рынков, обеды в забегаловках и аренда вне туристических зон — да, заметно приятнее московских. Электроника, автомобили и всё импортное — дороже, чем вы ждёте. Калькулятор в главе 04 — трезвая отправная точка без маркетинговых иллюзий.</p></div></div>
+          <div class="acc-body"><div class="acc-pad"><p>Значит, консультация сработала: решение принято осознанно, а не в тумане. Оставшееся ясное «нет» стоит всех потраченных денег — люди годами платят этим сомнениям уже без всяких гарантий.</p></div></div>
         </div>
         <div class="acc-item">
           <button class="acc-head" aria-expanded="false">
-            <span class="acc-name">Реально ли остаться навсегда?</span>
+            <span class="acc-name">А если я передумаю уже после переезда?</span>
             <span class="acc-ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4"/></svg></span>
           </button>
-          <div class="acc-body"><div class="acc-pad"><p>Да, путь длинный, но понятный: год резиденции по VIVIS или через работу продлевается; после четырёх лет непрерывной резиденции (или одного года в браке, или с ребёнком-бразильцем) можно подать на гражданство — понадобится подтверждённый португальский. Паспорт Бразилии, кстати, открывает Меркосур и массу направлений без виз.</p></div></div>
+          <div class="acc-body"><div class="acc-pad"><p>Передумать — не провал: статистика возвратов у переезжающих большая, и это нормально. Именно поэтому в чеклисте есть пункт «план Б»: обратная дорога, финансы, что сказать себе. Кто возвращается с планом — возвращается без катастрофы.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">
+            <span class="acc-name">Как проходят запись и оплата?</span>
+            <span class="acc-ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4"/></svg></span>
+          </button>
+          <div class="acc-body"><div class="acc-pad"><p>Оставляете заявку в форме выше — отвечаю в течение суток, подбираем слот, после предоплаты время закрепляется. Оплата переводом или картой. После разговора в течение 24 часов приходит конспект с цифрами и ссылка на запись.</p></div></div>
         </div>
       </div>
     </div>
@@ -827,15 +959,15 @@ footer.site{background:var(--green-deep); color:var(--cream)}
 <footer class="site">
   <div class="foot-marquee" aria-hidden="true">
     <div class="marquee-track">
-      <div><span>Boa sorte</span><span>Boa viagem</span><span>Tudo vai dar certo</span><span>Всё получится</span><span>Abrace o novo</span></div>
-      <div><span>Boa sorte</span><span>Boa viagem</span><span>Tudo vai dar certo</span><span>Всё получится</span><span>Abrace o novo</span></div>
+      <div><span>Boa sorte</span><span>Хорошей дороги</span><span>Всё получится</span><span>Abrace o novo</span><span>Реши со счётом</span></div>
+      <div><span>Boa sorte</span><span>Хорошей дороги</span><span>Всё получится</span><span>Abrace o novo</span><span>Реши со счётом</span></div>
     </div>
   </div>
   <div class="wrap foot-body">
-    <p class="foot-big">Boa <em>viagem!</em></p>
+    <p class="foot-big">Хорошей дороги — <em>в любую сторону</em></p>
     <div class="foot-row">
-      <p><b>Путевой журнал «Россия → Бразилия»</b><br>выпуск № 01 · сделано с саудади</p>
-      <p>Материал носит обзорный характер. Миграционные правила меняются:<br>сверяйтесь с gov.br и консульством Федеративной Республики Бразилия.</p>
+      <p><b>Точка Б</b><br>журнал о переезде и консультации · выпуск № 01</p>
+      <p>Материал носит обзорный характер. Визовые правила меняются:<br>сверяйтесь с официальными источниками и миграционными службами стран.</p>
     </div>
   </div>
 </footer>
@@ -845,6 +977,7 @@ footer.site{background:var(--green-deep); color:var(--cream)}
 'use strict';
 const $ = s => document.querySelector(s);
 const fmt = n => Math.round(n).toLocaleString('ru-RU');
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------- появление секций ---------- */
 const ro = new IntersectionObserver(es => es.forEach(e => {
@@ -852,18 +985,17 @@ const ro = new IntersectionObserver(es => es.forEach(e => {
 }), {threshold:.12});
 document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
-/* ---------- термометр маршрута ---------- */
-const thermoDot = $('#thermoDot'), thermoNow = $('#thermoNow');
-function thermo(){
+/* ---------- шкала решения ---------- */
+const decideDot = $('#decideDot'), decideNow = $('#decideNow');
+function decide(){
   const max = document.documentElement.scrollHeight - innerHeight;
   const p = Math.min(1, Math.max(0, scrollY / (max || 1)));
-  thermoDot.style.left = (p*100) + '%';
-  const T = -7 + 33*p;
-  thermoNow.textContent = (T < 0 ? '\u2212' : '+') + Math.abs(Math.round(T)) + '\u00B0';
+  decideDot.style.left = (p*100) + '%';
+  decideNow.textContent = Math.round(p*100) + '%';
 }
-addEventListener('scroll', thermo, {passive:true});
-addEventListener('resize', thermo);
-thermo();
+addEventListener('scroll', decide, {passive:true});
+addEventListener('resize', decide);
+decide();
 
 /* ---------- параллакс дуги в hero ---------- */
 const hero = $('#hero'), heroRoute = $('#heroRoute');
@@ -875,7 +1007,7 @@ if(hero && matchMedia('(pointer:fine)').matches){
   });
 }
 
-/* ---------- универсальный аккордеон ---------- */
+/* ---------- аккордеон (FAQ) ---------- */
 document.querySelectorAll('.acc-head').forEach(btn => {
   btn.addEventListener('click', () => {
     const item = btn.closest('.acc-item');
@@ -886,104 +1018,510 @@ document.querySelectorAll('.acc-head').forEach(btn => {
   });
 });
 
-/* ---------- города ---------- */
-const cities = [...document.querySelectorAll('.city')];
-const cityImg = $('#cityImg'), cityCoords = $('#cityCoords'), cityPop = $('#cityPop');
-function openCityInfo(city){
-  const body = city.querySelector('.city-info');
-  body.style.maxHeight = body.scrollHeight + 'px';
-}
-cities.forEach(city => {
-  city.querySelector('.city-name').addEventListener('click', () => {
-    if(city.classList.contains('active')) return;
-    cities.forEach(c => {
-      c.classList.toggle('active', c === city);
-      if(c !== city){ c.querySelector('.acc-body'); c.querySelector('.city-info').style.maxHeight = '0px'; c.classList.remove('open'); }
-    });
-    const next = city.dataset.img;
-    cityImg.style.opacity = 0;
-    setTimeout(() => {
-      cityImg.src = next;
-      const done = () => cityImg.style.opacity = 1;
-      if(cityImg.complete && cityImg.naturalWidth) done();
-      else { cityImg.onload = done; setTimeout(done, 1400); }
-    }, 230);
-    cityCoords.textContent = city.dataset.coords;
-    cityPop.textContent = city.dataset.pop;
-    openCityInfo(city);
-  });
-});
-/* первый город открыт по умолчанию */
-const firstCity = cities[0];
-firstCity.classList.add('active');
-addEventListener('load', () => openCityInfo(firstCity));
-setTimeout(() => openCityInfo(firstCity), 600);
+/* ================================================= */
+/* ТЕСТ ГОТОВНОСТИ                                    */
+/* ================================================= */
+const QUIZ = [
+  {q:'Сколько месяцев ты продержишься на новом месте без работы?',
+   o:[['Ни одного — первым делом там искать работу', 0],
+      ['1–3 месяца — есть подушка', 1],
+      ['От четырёх месяцев — жить можно', 2]]},
+  {q:'Откуда будут деньги там?',
+   o:[['Пока не знаю — на месте что-нибудь найдётся', 0],
+      ['Удалёнка на российском рынке', 1],
+      ['Доход в валюте / зарубежные клиенты', 2]]},
+  {q:'Язык страны, куда тебя тянет?',
+   o:[['Не учил ни разу', 0],
+      ['Общусь со словарём', 1],
+      ['Уверенно, учу регулярно', 2]]},
+  {q:'Что с документами?',
+   o:[['Даже загран просрочен', 0],
+      ['Загран есть, апостили — в планах', 1],
+      ['Пакет собран и апостилирован', 2]]},
+  {q:'Сколько времени ты провёл в стране мечты?',
+   o:[['Только в ленте соцсетей', 0],
+      ['Отпуск, 1–2 недели', 1],
+      ['Жил 2+ недели по-местному: аренда, магазины, будни', 2]]},
+  {q:'Что говорят близкие?',
+   o:[['Тема закрыта — обсуждать больно', 0],
+      ['Обсуждали, но без конкретики', 1],
+      ['В курсе и поддерживают — есть общий план', 2]]},
+  {q:'Бюрократия чужого языка и госорганов — это…',
+   o:[['Паника от одной мысли', 0],
+      ['Терпимо, если по шагам', 1],
+      ['Даже интересно — обожаю чеклисты', 2]]}
+];
+const STAGES = [
+  {min:0,  max:5,  stamp:'ПОКА РАНО',    cls:'wait',
+   verdict:'Точка А — тоже неплохо',
+   text:'Твой фундамент пока держится на желании, а оно выдыхается первым. Это не приговор — это очередь дел: подушка, доход, документы. Иногда самый честный план — «остаюсь и готовлюсь год». Приходи на консультацию-разведку, соберём именно такой.',
+   stage:'Только размышляю'},
+  {min:6,  max:10, stamp:'ПОЧТИ ГОТОВ',  cls:'mid',
+   verdict:'Чемодан наполовину собран',
+   text:'Фундамент есть, но без маршрута и цифр он быстро превращается в хаос. Не хватает одного разговора, где всё разложится по полочкам: страна, бюджет, срок. Записывайся — конспект с планом будет у тебя через сутки.',
+   stage:'Собираю информацию'},
+  {min:11, max:14, stamp:'К ПОСАДКЕ ГОТОВ', cls:'go',
+   verdict:'Билет уже просится в карман',
+   text:'Ты подготовлен лучше, чем тебе кажется. Осталось выбрать точку Б и собрать маршрут легализации — и это делается за один разговор. Забирай слот, пока они ещё есть в этом месяце.',
+   stage:'Готов действовать'}
+];
+const quizBody = $('#quizBody'), quizStep = $('#quizStep'), quizBar = $('#quizBar');
+const quizBack = $('#quizBack'), quizHint = $('#quizHint');
+let qIdx = 0, qAnswers = [];
 
-/* ---------- калькулятор ---------- */
-const sRent = $('#sRent'), sFood = $('#sFood'), sMisc = $('#sMisc'), rateInput = $('#rateInput');
-const oRent = $('#oRent'), oFood = $('#oFood'), oMisc = $('#oMisc');
-const sumBrl = $('#sumBrl'), sumRub = $('#sumRub');
-const bars = {rent:$('#barRent'), food:$('#barFood'), misc:$('#barMisc')};
-const legs = {rent:$('#legRent'), food:$('#legFood'), misc:$('#legMisc')};
+function quizRenderQ(){
+  const item = QUIZ[qIdx];
+  quizStep.textContent = 'вопрос ' + (qIdx+1) + ' / ' + QUIZ.length;
+  quizBar.style.width = (qIdx / QUIZ.length * 100) + '%';
+  quizHint.textContent = 'выбери один вариант';
+  quizBack.style.visibility = qIdx > 0 ? 'visible' : 'hidden';
+  let html = '<p class="quiz-q">' + item.q + '</p><div class="quiz-opts">';
+  item.o.forEach((opt, i) => {
+    const sel = qAnswers[qIdx] === i ? ' sel' : '';
+    html += '<button type="button" class="quiz-opt' + sel + '" data-i="' + i + '"><i>' +
+            ['A','B','C'][i] + '</i>' + opt[0] + '</button>';
+  });
+  html += '</div>';
+  quizBody.innerHTML = html;
+  quizBody.querySelectorAll('.quiz-opt').forEach(btn => {
+    btn.addEventListener('click', () => {
+      qAnswers[qIdx] = +btn.dataset.i;
+      quizBody.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('sel'));
+      btn.classList.add('sel');
+      setTimeout(() => { qIdx++; qIdx < QUIZ.length ? quizRenderQ() : quizRenderResult(); }, 280);
+    });
+  });
+}
+function quizRenderResult(){
+  const score = qAnswers.reduce((s, a, i) => s + (a !== undefined ? QUIZ[i].o[a][1] : 0), 0);
+  const res = STAGES.find(r => score >= r.min && score <= r.max) || STAGES[0];
+  quizStep.textContent = 'результат';
+  quizBar.style.width = '100%';
+  quizBack.style.visibility = 'hidden';
+  quizHint.textContent = 'ответы можно поменять — «пройти ещё раз»';
+  let strip = '';
+  for(let i = 0; i < 14; i++) strip += '<span class="' + (i < score ? 'on' : '') + '"></span>';
+  quizBody.innerHTML =
+    '<div class="quiz-result">' +
+      '<div class="quiz-score-strip" aria-hidden="true">' + strip + '</div>' +
+      '<span class="stamp ' + res.cls + '">' + res.stamp + '</span>' +
+      '<p class="quiz-verdict">' + res.verdict + '</p>' +
+      '<p class="quiz-text">' + res.text + '</p>' +
+      '<p class="quiz-score-line">счёт: ' + score + ' из 14 · ' + (qAnswers.length === QUIZ.length ? 'все 7 вопросов отвечены' : 'были пропуски — они посчитаны как нули') + '</p>' +
+      '<div class="quiz-cta">' +
+        '<a class="btn btn-primary" href="#book">Обсудить результат на консультации' +
+          '<svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M1 5h11M8.5 1.5 12 5l-3.5 3.5" stroke="currentColor" stroke-width="1.6"/></svg></a>' +
+        '<button type="button" class="btn btn-ghost" id="quizAgain">Пройти ещё раз</button>' +
+      '</div>' +
+    '</div>';
+  const sel = $('#fStage');
+  if(sel){ sel.value = res.stage; $('#quizNote').classList.add('show'); }
+  $('#quizAgain').addEventListener('click', () => {
+    qIdx = 0; qAnswers = []; quizRenderQ();
+  });
+}
+quizBack.addEventListener('click', () => {
+  if(qIdx > 0){ qIdx--; quizRenderQ(); }
+});
+quizRenderQ();
+
+/* ================================================= */
+/* АТЛАС + КАРТА (общее состояние выбора)             */
+/* ================================================= */
+/* карта: схема-веер из Москвы; x/y — доли ширины/высоты; lift — подъём дуги */
+const MAPD = [
+  {id:'RS', name:'БЕЛГРАД',      code:'BEG', km:1780,  time:'≈ 3 ч',                  x:.40, y:.66, lift:.15},
+  {id:'AM', name:'ЕРЕВАН',       code:'EVN', km:1800,  time:'≈ 3 ч',                  x:.48, y:.575,lift:.17},
+  {id:'TR', name:'СТАМБУЛ',      code:'IST', km:2100,  time:'≈ 4 ч 30 м',             x:.56, y:.49, lift:.20},
+  {id:'AE', name:'ДУБАЙ',        code:'DXB', km:3700,  time:'≈ 5 ч 30 м',             x:.645,y:.405,lift:.26},
+  {id:'BR', name:'САН-ПАУЛУ',    code:'GRU', km:11500, time:'от 18 ч · со стыковкой', x:.81, y:.29, lift:.38},
+  {id:'AR', name:'БУЭНОС-АЙРЕС', code:'EZE', km:13400, time:'от 20 ч · со стыковкой', x:.905,y:.205,lift:.42}
+];
+
+const ctries = [...document.querySelectorAll('.cntry')];
+const ctryEls = {
+  code:$('#ctryCode'), name:$('#ctryName'), region:$('#ctryRegion'),
+  tag:$('#ctryTag'), foot:$('#ctryFoot')
+};
+document.querySelectorAll('#ctryMeters .meter-cells').forEach(box => {
+  for(let i = 0; i < 5; i++) box.appendChild(document.createElement('span'));
+});
+function setMeters(str){
+  const vals = str.split(',').map(Number);
+  document.querySelectorAll('#ctryMeters .meter-cells').forEach((box, i) => {
+    [...box.children].forEach((cell, j) => cell.classList.toggle('on', j < vals[i]));
+  });
+}
+let mapActive = 0;          /* активный индекс для карты */
+let userActive = null;      /* выбор пользователя (null = авто-облёт) */
+let autoMode = true, lastSwitch = 0;
+const mAutoBtn = $('#mapAuto');
+
+function selectCountry(code, fromCanvas){
+  const idx = MAPD.findIndex(d => d.id === code);
+  if(idx < 0) return;
+  userActive = idx; mapActive = idx; autoMode = false;
+  mAutoBtn.textContent = 'авто-облёт';
+  ctries.forEach(o => {
+    const on = o.dataset.code === code;
+    o.classList.toggle('active', on);
+    const info = o.querySelector('.cntry-info');
+    info.style.maxHeight = on ? info.scrollHeight + 'px' : '0px';
+  });
+  const art = ctries.find(o => o.dataset.code === code);
+  ctryEls.code.textContent = art.dataset.code;
+  ctryEls.name.textContent = art.dataset.name;
+  ctryEls.region.textContent = art.dataset.region;
+  ctryEls.tag.textContent = art.dataset.tag;
+  ctryEls.foot.textContent = art.dataset.foot;
+  setMeters(art.dataset.meters);
+}
+ctries.forEach(c => {
+  c.querySelector('.cntry-name').addEventListener('click', () => selectCountry(c.dataset.code, false));
+});
+
+/* первый открыт — Сербия */
+const firstC = ctries[0];
+function openFirstCountry(){
+  firstC.querySelector('.cntry-info').style.maxHeight = firstC.querySelector('.cntry-info').scrollHeight + 'px';
+  setMeters(firstC.dataset.meters);
+}
+setTimeout(openFirstCountry, 600);
+addEventListener('load', openFirstCountry);
+
+/* ---------- канвас-карта ---------- */
+const fc = $('#routeCanvas'), fx = fc.getContext('2d');
+let FW = 0, FH = 0, stars = [], geo = null, hoverIdx = -1;
+
+const bez = (p0,p1,p2,t) => { const u = 1-t; return {
+  x: u*u*p0.x + 2*u*t*p1.x + t*t*p2.x,
+  y: u*u*p0.y + 2*u*t*p1.y + t*t*p2.y }; };
+const deriv = (p0,p1,p2,t) => ({
+  x: 2*(1-t)*(p1.x-p0.x) + 2*t*(p2.x-p0.x),
+  y: 2*(1-t)*(p1.y-p0.y) + 2*t*(p2.y-p0.y) });
+const ease = u => -(Math.cos(Math.PI*u) - 1) / 2;
+
+function mapResize(){
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  FW = fc.clientWidth; FH = fc.clientHeight;
+  fc.width = FW * dpr; fc.height = FH * dpr;
+  fx.setTransform(dpr,0,0,dpr,0,0);
+  const O = {x: FW*.07, y: FH*.80};
+  geo = {O, D: MAPD.map(d => ({
+    x: d.x*FW, y: d.y*FH,
+    c: {x:(O.x + d.x*FW)/2, y: Math.min(O.y, d.y*FH) - d.lift*FH}
+  }))};
+  stars = [];
+  const n = Math.round(FW*FH/8500);
+  for(let i=0;i<n;i++){
+    stars.push({x: Math.random()*FW, y: Math.random()*FH*.92,
+      r: .4 + Math.random()*1.1, ph: Math.random()*6.28, sp: .4 + Math.random()*1.3});
+  }
+}
+function arcPoint(i, t){ const g = geo; return bez(g.O, g.D[i].c, g.D[i], t); }
+function drawArc(i, style, width, dash){
+  const g = geo;
+  fx.setLineDash(dash || []);
+  fx.strokeStyle = style; fx.lineWidth = width;
+  fx.beginPath(); fx.moveTo(g.O.x, g.O.y);
+  fx.quadraticCurveTo(g.D[i].c.x, g.D[i].c.y, g.D[i].x, g.D[i].y);
+  fx.stroke();
+  fx.setLineDash([]);
+}
+function mark(x, y, r){
+  fx.fillStyle = '#EFE9DC';
+  fx.beginPath(); fx.arc(x, y, r, 0, 7); fx.fill();
+  fx.strokeStyle = 'rgba(239,233,220,.5)';
+  fx.beginPath(); fx.arc(x, y, r+6, 0, 7); fx.stroke();
+}
+function label(x, y, name, code, km, active){
+  fx.textAlign = 'center';
+  fx.font = '11px "JetBrains Mono", monospace';
+  fx.fillStyle = active ? '#F2B705' : 'rgba(239,233,220,.85)';
+  fx.fillText(name + ' · ' + code, x, y - 26);
+  fx.font = '9px "JetBrains Mono", monospace';
+  fx.fillStyle = active ? 'rgba(242,183,5,.75)' : 'rgba(239,233,220,.4)';
+  fx.fillText(fmt(km) + ' км', x, y - 13);
+}
+function drawMap(now){
+  fx.clearRect(0,0,FW,FH);
+  fx.fillStyle = '#0B1720'; fx.fillRect(0,0,FW,FH);
+  /* звёзды */
+  for(const s of stars){
+    fx.globalAlpha = RM ? .5 : .2 + .75*Math.abs(Math.sin(s.ph + now/1000*s.sp));
+    fx.fillStyle = '#E9E4D8';
+    fx.beginPath(); fx.arc(s.x, s.y, s.r, 0, 7); fx.fill();
+  }
+  fx.globalAlpha = 1;
+  /* базовая линия точки А */
+  const g = geo;
+  fx.strokeStyle = 'rgba(239,233,220,.18)'; fx.lineWidth = 1;
+  fx.beginPath(); fx.moveTo(0, g.O.y); fx.lineTo(FW, g.O.y); fx.stroke();
+  fx.strokeStyle = 'rgba(239,233,220,.14)';
+  for(let x=24; x<FW; x+=46){
+    fx.beginPath(); fx.moveTo(x, g.O.y+5); fx.lineTo(x, g.O.y+13); fx.stroke();
+  }
+  /* дуги */
+  for(let i=0;i<MAPD.length;i++){
+    if(i === mapActive) continue;
+    drawArc(i, i === hoverIdx ? 'rgba(239,233,220,.5)' : 'rgba(239,233,220,.22)',
+            i === hoverIdx ? 1.4 : 1, [2,8]);
+  }
+  if(mapActive !== hoverIdx) drawArc(hoverIdx, 'rgba(242,183,5,.4)', 1.4);
+  drawArc(mapActive, 'rgba(242,183,5,.35)', 2);
+  /* самолёт по активной дуге */
+  if(!RM){
+    const u = ((now - t0)/7000) % 1;
+    const tt = ease(u);
+    if(tt > 0.02){
+      const q0 = arcPoint(mapActive, 0), qb = arcPoint(mapActive, tt);
+      fx.strokeStyle = '#F2B705'; fx.lineWidth = 2;
+      fx.beginPath(); fx.moveTo(q0.x, q0.y);
+      /* хвост-трейл: рисуем сегмент от 0 до tt */
+      for(let s = 0.02; s <= tt; s += 0.02){
+        const p = arcPoint(mapActive, s);
+        fx.lineTo(p.x, p.y);
+      }
+      fx.lineTo(qb.x, qb.y);
+      fx.stroke();
+    }
+    const pos = arcPoint(mapActive, tt), d = deriv(g.O, g.D[mapActive].c, g.D[mapActive], tt);
+    fx.save();
+    fx.translate(pos.x, pos.y); fx.rotate(Math.atan2(d.y, d.x));
+    fx.fillStyle = '#EFE9DC';
+    fx.beginPath();
+    fx.moveTo(18,0); fx.lineTo(-12,-8); fx.lineTo(-5,0); fx.lineTo(-12,8);
+    fx.closePath(); fx.fill();
+    fx.restore();
+  }
+  /* точка А */
+  mark(g.O.x, g.O.y, 5);
+  fx.font = '11px "JetBrains Mono", monospace'; fx.textAlign = 'left';
+  fx.fillStyle = 'rgba(239,233,220,.85)';
+  fx.fillText('МОСКВА · ТОЧКА А', g.O.x + 16, g.O.y - 12);
+  /* точки Б */
+  for(let i=0;i<MAPD.length;i++){
+    const d = g.D[i], m = MAPD[i];
+    mark(d.x, d.y, i === mapActive ? 5 : 3.5);
+    label(d.x, d.y, m.name, m.code, m.km, i === mapActive);
+  }
+  /* телеметрия */
+  const m = MAPD[mapActive];
+  mDest.textContent = m.name;
+  mKm.textContent = fmt(m.km) + ' км';
+  mTime.textContent = m.time;
+  mStatus.textContent = autoMode ? 'авто-облёт · кликни направление' : 'выбрано: ' + m.name;
+}
+let t0 = performance.now();
+function mapLoop(now){
+  if(mapVisible && geo){
+    if(autoMode && !RM && now - lastSwitch > 5200){
+      mapActive = (mapActive + 1) % MAPD.length;
+      lastSwitch = now;
+    }
+    drawMap(now);
+  }
+  requestAnimationFrame(mapLoop);
+}
+let mapVisible = false;
+mapResize();
+addEventListener('resize', mapResize);
+new IntersectionObserver(es => es.forEach(e => mapVisible = e.isIntersecting), {threshold:.25}).observe(fc);
+
+/* ховер и клик по дугам/точкам */
+function pickAt(mx, my){
+  let best = -1, bestD = 24;
+  geo.D.forEach((d, i) => {
+    const dist = Math.hypot(d.x - mx, d.y - my);
+    if(dist < bestD){ bestD = dist; best = i; }
+  });
+  if(best < 0){
+    let arcD = 12;
+    MAPD.forEach((m, i) => {
+      for(let s = 0; s <= 1; s += 0.05){
+        const p = arcPoint(i, s);
+        const dist = Math.hypot(p.x - mx, p.y - my);
+        if(dist < arcD){ arcD = dist; best = i; }
+      }
+    });
+  }
+  return best;
+}
+fc.addEventListener('pointermove', e => {
+  if(!geo) return;
+  const r = fc.getBoundingClientRect();
+  hoverIdx = pickAt(e.clientX - r.left, e.clientY - r.top);
+  fc.style.cursor = hoverIdx >= 0 ? 'pointer' : 'default';
+});
+fc.addEventListener('pointerleave', () => hoverIdx = -1);
+fc.addEventListener('click', e => {
+  if(!geo) return;
+  const r = fc.getBoundingClientRect();
+  const i = pickAt(e.clientX - r.left, e.clientY - r.top);
+  if(i >= 0){ selectCountry(MAPD[i].id, true); lastSwitch = performance.now(); }
+});
+mAutoBtn.addEventListener('click', () => {
+  autoMode = !autoMode;
+  if(autoMode){ userActive = null; mAutoBtn.textContent = 'стоп'; }
+  else mAutoBtn.textContent = 'авто-облёт';
+  lastSwitch = performance.now();
+});
+requestAnimationFrame(mapLoop);
+
+/* ================================================= */
+/* БЮДЖЕТНЫЙ КАЛЬКУЛЯТОР                              */
+/* ================================================= */
+const BUD = [
+  {n:'Армения',   cur:'US$ 700–1 100',   min:65000,  max:100000},
+  {n:'Сербия',    cur:'€ 800–1 200',     min:80000,  max:120000},
+  {n:'Бразилия',  cur:'R$ 5 000–7 500',  min:75000,  max:115000},
+  {n:'Аргентина', cur:'US$ 900–1 400',   min:85000,  max:130000},
+  {n:'Турция',    cur:'US$ 900–1 500',   min:85000,  max:140000},
+  {n:'ОАЭ',       cur:'US$ 2 500–3 500', min:220000, max:320000}
+];
+const SCALE = 350000;
+const budInput = $('#budget'), budgetOut = $('#budgetOut');
+const budRowsBox = $('#budRows'), budCount = $('#budCount'), budVerdict = $('#budVerdict');
+BUD.forEach(r => {
+  const row = document.createElement('div');
+  row.className = 'bud-row';
+  row.innerHTML =
+    '<div class="bud-name">' + r.n + '<span>' + r.cur + '</span></div>' +
+    '<div class="bud-track"><i class="bud-band"></i><i class="bud-tick"></i></div>' +
+    '<div class="bud-state"></div>';
+  budRowsBox.appendChild(row);
+  r.el = row;
+  r.el.querySelector('.bud-band').style.left  = (r.min / SCALE * 100) + '%';
+  r.el.querySelector('.bud-band').style.width = ((r.max - r.min) / SCALE * 100) + '%';
+});
 function paintRange(r){
   const p = (r.value - r.min) / (r.max - r.min) * 100;
   r.style.setProperty('--p', p + '%');
 }
-function recalc(){
-  const rent = +sRent.value, food = +sFood.value, misc = +sMisc.value;
-  oRent.textContent = 'R$ ' + fmt(rent);
-  oFood.textContent = 'R$ ' + fmt(food);
-  oMisc.textContent = 'R$ ' + fmt(misc);
-  const total = rent + food + misc;
-  const rate = Math.min(60, Math.max(1, parseFloat(rateInput.value) || 16));
-  sumBrl.textContent = fmt(total);
-  sumRub.textContent = '\u2248 ' + fmt(total * rate) + ' \u20BD';
-  bars.rent.style.width  = (rent / total * 100) + '%';
-  bars.food.style.width  = (food / total * 100) + '%';
-  bars.misc.style.width  = (misc / total * 100) + '%';
-  legs.rent.textContent = fmt(rent);
-  legs.food.textContent = fmt(food);
-  legs.misc.textContent = fmt(misc);
-  [sRent, sFood, sMisc].forEach(paintRange);
-}
-[sRent, sFood, sMisc].forEach(r => r.addEventListener('input', recalc));
-rateInput.addEventListener('input', recalc);
-document.querySelectorAll('#cityChips .chip').forEach(chip => {
-  chip.addEventListener('click', () => {
-    document.querySelectorAll('#cityChips .chip').forEach(c => c.classList.remove('active'));
-    chip.classList.add('active');
-    sRent.value = chip.dataset.rent;
-    sFood.value = chip.dataset.food;
-    sMisc.value = chip.dataset.misc;
-    recalc();
+function budUpdate(){
+  const b = +budInput.value;
+  budgetOut.textContent = fmt(b) + ' ₽';
+  paintRange(budInput);
+  let ok = 0;
+  BUD.forEach(r => {
+    r.el.querySelector('.bud-tick').style.left = Math.min(100, b / SCALE * 100) + '%';
+    const st = r.el.querySelector('.bud-state');
+    r.el.classList.remove('ok','tight','no');
+    if(b >= r.max){ r.el.classList.add('ok'); st.textContent = 'да'; ok++; }
+    else if(b >= r.min){ r.el.classList.add('tight'); st.textContent = 'впритык'; }
+    else { r.el.classList.add('no'); st.textContent = 'пока нет'; }
   });
-});
-recalc();
-
-/* ---------- озвучка фраз ---------- */
-const phRows = document.querySelectorAll('.ph-row');
-function ptVoice(){
-  const vs = speechSynthesis.getVoices();
-  return vs.find(v => /^pt[-_]BR/i.test(v.lang)) || vs.find(v => /^pt/i.test(v.lang));
+  budCount.textContent = ok;
+  budVerdict.textContent =
+    ok === 0 ? 'Пока ни одного — это не приговор, это задача для разговора о доходе. Такие задачи решаются.' :
+    ok <= 2 ? 'Уже есть выбор. Два-три кандидата — идеальный шорт-лист: между ними и сравниваем.' :
+    ok <= 4 ? 'Отличная позиция: можно выбирать по климату и языку, а не только по цене.' :
+    'Все шесть открыты — вопрос только в приоритетах: климат, язык, скорость паспорта.';
 }
-phRows.forEach(row => {
-  row.addEventListener('click', () => {
-    if(!('speechSynthesis' in window)) return;
-    speechSynthesis.cancel();
-    phRows.forEach(r => r.classList.remove('speaking'));
-    const u = new SpeechSynthesisUtterance(row.dataset.pt);
-    u.lang = 'pt-BR'; u.rate = .85;
-    const v = ptVoice(); if(v) u.voice = v;
-    u.onstart  = () => row.classList.add('speaking');
-    u.onend = u.onerror = () => row.classList.remove('speaking');
-    speechSynthesis.speak(u);
-  });
-});
+budInput.addEventListener('input', budUpdate);
+budUpdate();
 
-/* ---------- чеклист с сохранением ---------- */
+/* ================================================= */
+/* ЯЗЫКОВОЙ МОДУЛЬ                                    */
+/* ================================================= */
+const LANGS = [
+  {id:'RS', label:'Сербский', code:'sr-RS',
+   note:'Сербский близок к русскому — половина слов угадывается, кириллица знакома.',
+   rows:[
+    ['Zdravo!','ЗДРА-во','Привет!'],
+    ['Hvala!','ХВА-ла','Спасибо!'],
+    ['Koliko košta?','КО-ли-ко КОШ-та','Сколько стоит?'],
+    ['Račun, molim','РА-чун МО-лим','Счёт, пожалуйста'],
+    ['Ne govorim srpski','не го-ВО-рим СРП-ски','Я не говорю по-сербски']]},
+  {id:'AM', label:'Армянский', code:'hy-AM',
+   note:'Честно: в Ереване по-русски поймут везде — армянские фразы здесь для удовольствия.',
+   rows:[
+    ['Barev!','ба-РЕВ','Привет!'],
+    ['Merci!','мер-СИ','Спасибо! (так и говорят)'],
+    ['Inch arzhe?','инч ар-ЖЭ','Сколько стоит?'],
+    ['Xntrem','хэн-ТРЭМ','Пожалуйста'],
+    ['Hayeren chem xosum','ха-Е-рен чэм хо-СУМ','Я не говорю по-армянски']]},
+  {id:'TR', label:'Турецкий', code:'tr-TR',
+   note:'Турецкий строится как монтаж: корень плюс окончания. Звучит страшно, собирается легко.',
+   rows:[
+    ['Merhaba!','мер-ха-БА','Привет!'],
+    ['Teşekkürler','те-шек-кЮР-лер','Спасибо!'],
+    ['Kaç para?','КАЧ па-РА','Сколько стоит?'],
+    ['Hesap, lütfen','хе-САП лют-ФЕН','Счёт, пожалуйста'],
+    ['Türkçe bilmiyorum','тЮРК-че биль-ми-ЙУ-рум','Я не говорю по-турецки']]},
+  {id:'AE', label:'Арабский', code:'ar-AE',
+   note:'В Дубае хватает английского — арабские фразы открывают двери и улыбки.',
+   rows:[
+    ['Marhaba!','мар-ХА-ба','Привет!'],
+    ['Shukran!','ШУК-ран','Спасибо!'],
+    ['Bi-kam?','би-КАМ','Сколько стоит?'],
+    ['Al-hisab, law samaht','аль-хи-САБ, лау СА-махт','Счёт, пожалуйста'],
+    ['Ma atakallam arabi','ма а-та-КАЛ-лам А-ра-би','Я не говорю по-арабски']]},
+  {id:'BR', label:'Португальский', code:'pt-BR',
+   note:'Бразильский вариант мягче и певучее европейского — акцент здесь любят.',
+   rows:[
+    ['Olá!','о-ЛА','Привет!'],
+    ['Obrigado / Obrigada','о-бри-ГА-ду / -ДА','Спасибо (м/ж говорит)'],
+    ['Quanto custa?','КУАН-ту КУС-та','Сколько стоит?'],
+    ['A conta, por favor','а КОН-та пор фа-ВОР','Счёт, пожалуйста'],
+    ['Não falo português','НАУН ФА-лу пор-ту-ГЕЙШ','Я не говорю по-португальски']]},
+  {id:'AR', label:'Испанский', code:'es-AR',
+   note:'Аргентинский испанский — с мелодикой итальянца. Выучив его, читаешь и португальский.',
+   rows:[
+    ['¡Hola!','О-ла','Привет!'],
+    ['Gracias','ГРА-си-ас','Спасибо!'],
+    ['¿Cuánto cuesta?','КУАН-то КУЭС-та','Сколько стоит?'],
+    ['La cuenta, por favor','ла КУЭН-та пор фа-ВОР','Счёт, пожалуйста'],
+    ['No hablo español','но АБ-ло эс-па-НЬОЛЬ','Я не говорю по-испански']]}
+];
+const langChips = $('#langChips'), langRows = $('#langRows'), langNote = $('#langNote');
+LANGS.forEach((L, i) => {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'chip' + (i === 0 ? ' active' : '');
+  b.textContent = L.label;
+  b.addEventListener('click', () => {
+    langChips.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    b.classList.add('active');
+    renderLang(i);
+  });
+  langChips.appendChild(b);
+});
+const SAY_SVG = '<svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 5.5v4h2.5L8 12.5v-10L4.5 5.5H2z" fill="currentColor"/><path d="M10 5.5a3 3 0 0 1 0 4M11.8 4a5.4 5.4 0 0 1 0 7" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>';
+function renderLang(i){
+  const L = LANGS[i];
+  langNote.textContent = L.note + ' Если голоса в системе нет — фраза подсветится без звука.';
+  langRows.innerHTML = L.rows.map(r =>
+    '<div class="ph-row" data-pt="' + r[0].replace(/"/g,'&quot;') + '">' +
+      '<span class="ph-say">' + SAY_SVG + '</span>' +
+      '<span class="ph-pt">' + r[0] + '</span>' +
+      '<span class="ph-tr">[' + r[1] + ']</span>' +
+      '<span class="ph-ru">' + r[2] + '</span>' +
+    '</div>').join('');
+  langRows.querySelectorAll('.ph-row').forEach(row => {
+    row.addEventListener('click', () => {
+      if(!('speechSynthesis' in window)) return;
+      speechSynthesis.cancel();
+      langRows.querySelectorAll('.ph-row').forEach(r => r.classList.remove('speaking'));
+      const u = new SpeechSynthesisUtterance(row.dataset.pt);
+      u.lang = L.code; u.rate = .85;
+      const vs = speechSynthesis.getVoices();
+      const v = vs.find(x => x.lang.toLowerCase().startsWith(L.code.split('-')[0].toLowerCase()));
+      if(v) u.voice = v;
+      u.onstart  = () => row.classList.add('speaking');
+      u.onend = u.onerror = () => row.classList.remove('speaking');
+      speechSynthesis.speak(u);
+    });
+  });
+}
+renderLang(0);
+
+/* ================================================= */
+/* ЧЕКЛИСТ С СОХРАНЕНИЕМ                              */
+/* ================================================= */
 const boxes = [...document.querySelectorAll('#checkList input')];
 const checkBar = $('#checkBar'), checkPct = $('#checkPct'), checkDone = $('#checkDone');
-const KEY = 'br-journal-checklist';
+const KEY = 'tochka-b-checklist-v2';
 try{
   const saved = JSON.parse(localStorage.getItem(KEY) || '[]');
   boxes.forEach((b,i) => b.checked = !!saved[i]);
@@ -1000,140 +1538,41 @@ function updateChecks(){
 boxes.forEach(b => b.addEventListener('change', updateChecks));
 updateChecks();
 
-/* ---------- канвас: перелёт MOW → GRU ---------- */
-const fc = $('#flightCanvas'), fx = fc.getContext('2d');
-const KM = 11436, HOURS = 20, DUR = 16000;
-let FW = 0, FH = 0, stars = [], G = null;
-let flightVisible = false, flightDone = false;
-let playing = false, started = false, tStart = 0;
-const tKm = $('#tKm'), tTime = $('#tTime'), tSpd = $('#tSpd'), tTemp = $('#tTemp'), tStatus = $('#tStatus');
-
-const lerp = (a,b,t) => ({x: a.x + (b.x-a.x)*t, y: a.y + (b.y-a.y)*t});
-const bez = (p0,p1,p2,t) => { const u = 1-t; return {
-  x: u*u*p0.x + 2*u*t*p1.x + t*t*p2.x,
-  y: u*u*p0.y + 2*u*t*p1.y + t*t*p2.y }; };
-const deriv = (p0,p1,p2,t) => ({
-  x: 2*(1-t)*(p1.x-p0.x) + 2*t*(p2.x-p0.x),
-  y: 2*(1-t)*(p1.y-p0.y) + 2*t*(p2.y-p0.y) });
-const ease = u => -(Math.cos(Math.PI*u) - 1) / 2;
-
-function flightResize(){
-  const dpr = Math.min(devicePixelRatio || 1, 2);
-  FW = fc.clientWidth; FH = fc.clientHeight;
-  fc.width = FW * dpr; fc.height = FH * dpr;
-  fx.setTransform(dpr,0,0,dpr,0,0);
-  const surfY = FH * .84, cx = FW/2, R = FH * 1.7, pcy = surfY + R;
-  const yAt = x => pcy - Math.sqrt(Math.max(R*R - (x-cx)*(x-cx), 0));
-  const xM = FW*.12, xS = FW*.88;
-  const P0 = {x:xM, y:yAt(xM)-10}, P2 = {x:xS, y:yAt(xS)-10};
-  const apex = FH*.30;
-  const P1 = {x:FW/2, y: 2*apex - (P0.y+P2.y)/2};
-  G = {surfY, cx, R, pcy, P0, P1, P2, yAt};
-  stars = [];
-  const n = Math.round(FW*FH/8500);
-  for(let i=0;i<n;i++){
-    const x = Math.random()*FW;
-    stars.push({x, y: Math.random()*Math.max(yAt(x)-36, 10),
-      r: .4 + Math.random()*1.1, ph: Math.random()*6.28, sp: .4 + Math.random()*1.3});
+/* ================================================= */
+/* ФОРМА ЗАЯВКИ                                       */
+/* ================================================= */
+/* ВПИШИ СВОИ КОНТАКТЫ: */
+const TG_LINK = 'https://t.me/tvoi_username';  /* ссылка на твой Telegram */
+const BOOK_EMAIL = '';                         /* например 'name@mail.ru' — заявка уйдёт письмом;
+                                                  если пусто — просто покажет успех (подключи бота/Formspree позже) */
+(function(){
+  const alt = document.querySelector('.book-alt a');
+  if(alt) alt.href = TG_LINK;
+})();
+ $('#bookForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = $('#fName').value.trim();
+  const contact = $('#fContact').value.trim();
+  if(!name || !contact){
+    (!name ? $('#fName') : $('#fContact')).focus();
+    return;
   }
-}
-function drawCityMark(x, y, label, side){
-  fx.fillStyle = '#EFE9DC';
-  fx.beginPath(); fx.arc(x, y, 3.5, 0, 7); fx.fill();
-  fx.strokeStyle = 'rgba(239,233,220,.5)';
-  fx.beginPath(); fx.arc(x, y, 9, 0, 7); fx.stroke();
-  fx.beginPath(); fx.moveTo(x, y-12); fx.lineTo(x, y-34); fx.stroke();
-  fx.fillStyle = 'rgba(239,233,220,.85)';
-  fx.font = '11px "JetBrains Mono", monospace';
-  fx.textAlign = side;
-  fx.fillText(label, x + (side==='left' ? 16 : -16), y - 40);
-}
-function drawFlight(now){
-  fx.clearRect(0,0,FW,FH);
-  fx.fillStyle = '#0B1720'; fx.fillRect(0,0,FW,FH);
-  /* звёзды */
-  for(const s of stars){
-    fx.globalAlpha = .2 + .75*Math.abs(Math.sin(s.ph + now/1000*s.sp));
-    fx.fillStyle = '#E9E4D8';
-    fx.beginPath(); fx.arc(s.x, s.y, s.r, 0, 7); fx.fill();
+  const data =
+    'Имя: ' + name + '\n' +
+    'Контакт: ' + contact + '\n' +
+    'Страна: ' + $('#fCountry').value + '\n' +
+    'Готовность: ' + $('#fStage').value + '\n' +
+    'Вопрос: ' + ($('#fPain').value.trim() || '—');
+  if(BOOK_EMAIL){
+    location.href = 'mailto:' + BOOK_EMAIL +
+      '?subject=' + encodeURIComponent('Заявка на консультацию — Точка Б') +
+      '&body=' + encodeURIComponent(data);
   }
-  fx.globalAlpha = 1;
-  /* планета */
-  fx.beginPath(); fx.arc(G.cx, G.pcy, G.R, Math.PI, 2*Math.PI);
-  fx.fillStyle = '#0E2A1E'; fx.fill();
-  fx.strokeStyle = 'rgba(239,233,220,.42)'; fx.lineWidth = 1; fx.stroke();
-  /* разметка поверхности */
-  fx.strokeStyle = 'rgba(239,233,220,.16)';
-  for(let x=24; x<FW; x+=46){
-    const y = G.yAt(x);
-    fx.beginPath(); fx.moveTo(x, y+5); fx.lineTo(x, y+13); fx.stroke();
-  }
-  fx.fillStyle = 'rgba(239,233,220,.38)';
-  fx.font = '10px "JetBrains Mono", monospace'; fx.textAlign = 'center';
-  fx.fillText('\u0410\u0422\u041B\u0410\u041D\u0422\u0418\u0427\u0415\u0421\u041A\u0418\u0419 \u041E\u041A\u0415\u0410\u041D', G.cx, FH-24);
-  /* города */
-  fx.strokeStyle = 'rgba(239,233,220,.5)';
-  drawCityMark(G.P0.x, G.yAt(G.P0.x), '\u041C\u041E\u0421\u041A\u0412\u0410 \u00B7 MOW', 'left');
-  drawCityMark(G.P2.x, G.yAt(G.P2.x), '\u0421\u0410\u041D-\u041F\u0410\u0423\u041B\u0423 \u00B7 GRU', 'right');
-  /* траектория */
-  const P0=G.P0, P1=G.P1, P2=G.P2;
-  fx.setLineDash([2,8]);
-  fx.strokeStyle = 'rgba(239,233,220,.3)'; fx.lineWidth = 1;
-  fx.beginPath(); fx.moveTo(P0.x,P0.y); fx.quadraticCurveTo(P1.x,P1.y,P2.x,P2.y); fx.stroke();
-  fx.setLineDash([]);
-  /* телеметрия */
-  let tt = 0;
-  if(playing){
-    const u = Math.min((now - tStart)/DUR, 1);
-    tt = ease(u);
-    if(u >= 1){ playing = false; flightDone = true; }
-  }
-  if(tt > 0){
-    const q1 = lerp(P0,P1,tt), b = bez(P0,P1,P2,tt);
-    fx.strokeStyle = '#F2B705'; fx.lineWidth = 2;
-    fx.beginPath(); fx.moveTo(P0.x,P0.y); fx.quadraticCurveTo(q1.x,q1.y,b.x,b.y); fx.stroke();
-  }
-  /* самолёт */
-  const pos = bez(P0,P1,P2,tt), d = deriv(P0,P1,P2,tt);
-  fx.save();
-  fx.translate(pos.x, pos.y); fx.rotate(Math.atan2(d.y, d.x));
-  fx.fillStyle = '#EFE9DC';
-  fx.beginPath();
-  fx.moveTo(20,0); fx.lineTo(-13,-9); fx.lineTo(-6,0); fx.lineTo(-13,9);
-  fx.closePath(); fx.fill();
-  if(Math.sin(now/280) > 0){
-    fx.fillStyle = '#F2B705';
-    fx.beginPath(); fx.arc(-6,0,2.2,0,7); fx.fill();
-  }
-  fx.restore();
-  /* панель телеметрии */
-  const km = Math.round(tt*KM), hrs = tt*HOURS;
-  tKm.textContent = fmt(km) + ' \u043A\u043C';
-  const h = Math.floor(hrs), m = Math.floor((hrs-h)*60);
-  tTime.textContent = String(h).padStart(2,'0') + ' \u0447 ' + String(m).padStart(2,'0') + ' \u043C';
-  tSpd.textContent = playing ? Math.round(890 + Math.sin(now/650)*24) + ' \u043A\u043C/\u0447' : (flightDone ? '\u2014' : '\u2014 \u043A\u043C/\u0447');
-  const T = -7 + 33*tt;
-  tTemp.textContent = (T < 0 ? '\u2212' : '+') + Math.abs(Math.round(T)) + ' \u00B0C';
-  if(!started) tStatus.textContent = 'MOW \u00B7 \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0430 \u043A \u0432\u044B\u043B\u0435\u0442\u0443';
-  else if(playing) tStatus.textContent = tt < .18 ? '\u043D\u0430\u0431\u043E\u0440 \u0432\u044B\u0441\u043E\u0442\u044B \u00B7 \u044D\u0448\u0435\u043B\u043E\u043D 9 000 \u043C'
-    : tt > .85 ? '\u0441\u043D\u0438\u0436\u0435\u043D\u0438\u0435 \u00B7 \u043F\u043E\u0434\u0445\u043E\u0434 \u043A GRU'
-    : '\u0432 \u0432\u043E\u0437\u0434\u0443\u0445\u0435 \u00B7 \u043D\u0430\u0434 \u0410\u0442\u043B\u0430\u043D\u0442\u0438\u043A\u043E\u0439';
-  else if(flightDone) tStatus.textContent = '\u043F\u0440\u0438\u043B\u0451\u0442 \u00B7 GRU Guarulhos \u00B7 +26\u00B0C';
-}
-function loop(now){
-  if(flightVisible && G) drawFlight(now);
-  requestAnimationFrame(loop);
-}
-flightResize();
-addEventListener('resize', flightResize);
-new IntersectionObserver(es => es.forEach(e => {
-  flightVisible = e.isIntersecting;
-  if(e.isIntersecting && !started){ started = true; playing = true; tStart = performance.now(); }
-}), {threshold:.3}).observe(fc);
- $('#flightReplay').addEventListener('click', () => {
-  started = true; playing = true; flightDone = false; tStart = performance.now();
+  /* чтобы заявки падали в Telegram автоматически — сюда позже вешается fetch на бота */
+  $('#formOk').classList.add('show');
+  this.querySelector('button[type=submit]').disabled = true;
+  $('#formOk').scrollIntoView({behavior:'smooth', block:'nearest'});
 });
-requestAnimationFrame(loop);
 })();
 </script>
 </body>
